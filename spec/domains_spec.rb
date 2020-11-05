@@ -39,7 +39,7 @@ describe SFRest::Domains do
 
   describe '#add_domains' do
     path = '/api/v1/domains'
-    domain = SecureRandom.urlsafe_base64(5) + '.' + SecureRandom.urlsafe_base64(5) + '.com'
+    domain = "#{SecureRandom.urlsafe_base64(5)}.#{SecureRandom.urlsafe_base64(5)}.com"
     it 'adds a domain' do
       stub_factory path, [{ node_type: 'site',
                             domain: domain,
@@ -52,7 +52,7 @@ describe SFRest::Domains do
 
   describe '#remove_domains' do
     path = '/api/v1/domains'
-    domain = SecureRandom.urlsafe_base64(5) + '.' + SecureRandom.urlsafe_base64(5) + '.com'
+    domain = "#{SecureRandom.urlsafe_base64(5)}.#{SecureRandom.urlsafe_base64(5)}.com"
     it 'deletes a domain' do
       stub_factory path, [{ node_type: 'site',
                             domain: domain,

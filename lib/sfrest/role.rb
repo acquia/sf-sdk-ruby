@@ -44,14 +44,14 @@ module SFRest
     # this will iterate through the roles pages
     def get_role_id(rolename)
       pglimit = 100
-      res = @conn.get('/api/v1/roles&limit=' + pglimit.to_s)
+      res = @conn.get("/api/v1/roles&limit=#{pglimit}")
       rolecount = res['count'].to_i
       id = role_data_from_results(res, rolename)
       return id if id
 
       pages = (rolecount / pglimit) + 1
       2.upto(pages) do |i|
-        res = @conn.get('/api/v1/roles&limit=' + pglimit.to_s + '?page=' + i.to_s)
+        res = @conn.get("/api/v1/roles&limit=#{pglimit}?page=#{i}")
         id = role_data_from_results(res, rolename)
         return id if id
       end
@@ -74,7 +74,7 @@ module SFRest
     # @param [Integer] id the role id
     # @return [Hash] the role
     def role_data(id)
-      @conn.get('/api/v1/roles/' + id.to_s)
+      @conn.get("/api/v1/roles/#{id}")
     end
 
     # Creates a role.

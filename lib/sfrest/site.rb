@@ -14,14 +14,14 @@ module SFRest
     # @return [Integer] the id of sitename
     def get_site_id(sitename)
       pglimit = 100
-      res = @conn.get('/api/v1/sites&limit=' + pglimit.to_s)
+      res = @conn.get("/api/v1/sites&limit=#{pglimit}")
       sitecount = res['count'].to_i
       id = site_data_from_results(res, sitename, 'id')
       return id if id
 
       pages = (sitecount / pglimit) + 1
       2.upto(pages) do |i|
-        res = @conn.get('/api/v1/sites&limit=' + pglimit.to_s + '?page=' + i.to_s)
+        res = @conn.get("/api/v1/sites&limit=#{pglimit}?page=#{i}")
         id = site_data_from_results(res, sitename, 'id')
         return id if id
       end
@@ -45,7 +45,7 @@ module SFRest
     # @param [Integer] site_id the site id
     # @return [Hash]
     def get_site_data(site_id)
-      @conn.get('/api/v1/sites/' + site_id.to_s)
+      @conn.get("/api/v1/sites/#{site_id}")
     end
 
     # gets the site id of the 1st one found using the api
@@ -60,6 +60,7 @@ module SFRest
     # @param [Boolean] show_incomplete whether to include incomplete sites in
     #   the list. The default differs from UI/SF to maintain backward compatibility.
     # @return [Hash{'count' => Integer, 'sites' => Hash}]
+    # rubocop: disable Style/OptionalBooleanParameter
     def site_list(show_incomplete = true)
       page = 1
       not_done = true
@@ -85,6 +86,7 @@ module SFRest
       end
       { 'count' => count, 'sites' => sites }
     end
+    # rubocop: enable Style/OptionalBooleanParameter
 
     # Creates a site.
     # @param [String] sitename The name of the site to create.
@@ -110,7 +112,7 @@ module SFRest
     # @param [Integer] site_id The id of the stie to be deleted
     # @return [Hash]
     def delete(site_id)
-      current_path = '/api/v1/sites/' + site_id.to_s
+      current_path = "/api/v1/sites/#{site_id}"
       @conn.delete current_path
     end
 

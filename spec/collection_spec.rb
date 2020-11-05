@@ -51,7 +51,7 @@ describe SFRest::Collection do
     collection = generate_collection_data
     collectionid = collection['id']
     it 'can get a collection data' do
-      stub_factory '/api/v1/collections/' + collectionid.to_s, collection.to_json
+      stub_factory "/api/v1/collections/#{collectionid}", collection.to_json
       expect(@conn.collection.get_collection_data(collectionid)['id']).to eq collectionid
     end
   end

@@ -15,6 +15,7 @@ module SFRest
     # @param [Boolean] skip_gardener skip staging the gardener and only stage the sites
     #
     # @return [Integer] Id of the staging task created.
+    # rubocop: disable Style/OptionalBooleanParameter
     def stage(to_env = 'test', sites = nil, email_site_status = false, skip_gardener = false)
       raise InvalidApiVersion, staging_versions unless staging_versions.include? 1
 
@@ -23,6 +24,7 @@ module SFRest
                   'skip_gardener' => skip_gardener }.to_json
       @conn.post('/api/v1/stage', payload)
     end
+    # rubocop: enable Style/OptionalBooleanParameter
 
     # Stage a site using the new method
     # @param [String] to_env the name of of target env. defaults to test
@@ -65,12 +67,10 @@ module SFRest
       possible_versions = [1, 2]
       @versions ||= []
       possible_versions.each do |version|
-        begin
-          @conn.get "/api/v#{version}/stage"
-          @versions.push version
-        rescue SFRest::InvalidResponse
-          nil
-        end
+        @conn.get "/api/v#{version}/stage"
+        @versions.push version
+      rescue SFRest::InvalidResponse
+        nil
       end
       @versions
     end

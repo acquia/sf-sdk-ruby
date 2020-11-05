@@ -209,7 +209,7 @@ module SFRest
     # Get a specific task's logs
     # @param [Integer] task_id
     def get_task_logs(task_id)
-      current_path = '/api/v1/tasks/' + task_id.to_s + '/logs'
+      current_path = "/api/v1/tasks/#{task_id}/logs"
       @conn.get(current_path)
     end
 
@@ -233,7 +233,7 @@ module SFRest
     # @param [Integer] task_id
     # @param [String] level family|task
     def pause_task(task_id, level = 'family')
-      current_path = '/api/v1/pause/' + task_id.to_s
+      current_path = "/api/v1/pause/#{task_id}"
       payload = { 'paused' => true, 'level' => level }.to_json
       @conn.post(current_path, payload)
     end
@@ -243,7 +243,7 @@ module SFRest
     # @param [Integer] task_id
     # @param [String] level family|task
     def resume_task(task_id, level = 'family')
-      current_path = '/api/v1/pause/' + task_id.to_s
+      current_path = "/api/v1/pause/#{task_id}"
       payload = { 'paused' => false, 'level' => level }.to_json
       @conn.post(current_path, payload)
     end
@@ -261,7 +261,7 @@ module SFRest
     # This will delete the task and its children
     # @param [Integer] task_id
     def delete_task(task_id)
-      current_path = '/api/v1/tasks/' + task_id.to_s
+      current_path = "/api/v1/tasks/#{task_id}"
       @conn.delete(current_path)
     end
 
@@ -269,7 +269,7 @@ module SFRest
     # @param [String] type softpaused | softpause-for-update
     # @return [Array] Array of wip classes
     def get_task_class_info(type = '')
-      current_path = '/api/v1/classes/' + type
+      current_path = "/api/v1/classes/#{type}"
       @conn.get(current_path)
     end
 

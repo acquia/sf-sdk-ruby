@@ -16,7 +16,7 @@ module SFRest
 
     # Gets the value of a specific variable.
     def get_variable(name)
-      current_path = '/api/v1/variables?name=' + name
+      current_path = "/api/v1/variables?name=#{name}"
       @conn.get(current_path)
     end
 

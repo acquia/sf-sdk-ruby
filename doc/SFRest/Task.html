@@ -6,15 +6,15 @@
 <title>
   Class: SFRest::Task
   
-    &mdash; Documentation by YARD 0.9.20
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "SFRest::Task";
   relpath = '../';
 </script>
@@ -498,8 +498,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Gets the value of a vairable @TODO: this is missnamed becasue it does not
-check the global paused variable.</p>
+<p>Gets the value of a vairable @TODO: this is missnamed becasue it does not check the global paused variable.</p>
 </div></span>
   
 </li>
@@ -1029,7 +1028,7 @@ check the global paused variable.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of Task</p>
+<p>Returns a new instance of Task.</p>
 
 
   </div>
@@ -1092,8 +1091,7 @@ check the global paused variable.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Deletes a specific task identified by its task id. This will delete the
-task and its children</p>
+<p>Deletes a specific task identified by its task id. This will delete the task and its children</p>
 
 
   </div>
@@ -1131,7 +1129,7 @@ task and its children</p>
       <pre class="code"><span class="info file"># File 'lib/sfrest/task.rb', line 263</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_task'>delete_task</span><span class='lparen'>(</span><span class='id identifier rubyid_task_id'>task_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/tasks/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_task_id'>task_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/tasks/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_task_id'>task_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1517,7 +1515,7 @@ task and its children</p>
       <pre class="code"><span class="info file"># File 'lib/sfrest/task.rb', line 271</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_task_class_info'>get_task_class_info</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/classes/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_type'>type</span>
+  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/classes/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_type'>type</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1712,7 +1710,7 @@ task and its children</p>
       <pre class="code"><span class="info file"># File 'lib/sfrest/task.rb', line 211</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_task_logs'>get_task_logs</span><span class='lparen'>(</span><span class='id identifier rubyid_task_id'>task_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/tasks/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_task_id'>task_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/logs</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/tasks/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_task_id'>task_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/logs</span><span class='tstring_end'>&quot;</span></span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1803,8 +1801,7 @@ task and its children</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Gets the value of a vairable @TODO: this is missnamed becasue it does not
-check the global paused variable</p>
+<p>Gets the value of a vairable @TODO: this is missnamed becasue it does not check the global paused variable</p>
 
 
   </div>
@@ -1919,8 +1916,7 @@ check the global paused variable</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Pauses a specific task identified by its task id. This can pause either the
-task and it&#39;s children or just the task</p>
+<p>Pauses a specific task identified by its task id. This can pause either the task and it&#39;s children or just the task</p>
 
 
   </div>
@@ -1977,7 +1973,7 @@ task and it&#39;s children or just the task</p>
       <pre class="code"><span class="info file"># File 'lib/sfrest/task.rb', line 235</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pause_task'>pause_task</span><span class='lparen'>(</span><span class='id identifier rubyid_task_id'>task_id</span><span class='comma'>,</span> <span class='id identifier rubyid_level'>level</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>family</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/pause/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_task_id'>task_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/pause/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_task_id'>task_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>paused</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>level</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_level'>level</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -2043,8 +2039,7 @@ task and it&#39;s children or just the task</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Resumes a specific task identified by its task id. This can resume either
-the task and it&#39;s children or just the task</p>
+<p>Resumes a specific task identified by its task id. This can resume either the task and it&#39;s children or just the task</p>
 
 
   </div>
@@ -2101,7 +2096,7 @@ the task and it&#39;s children or just the task</p>
       <pre class="code"><span class="info file"># File 'lib/sfrest/task.rb', line 245</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_resume_task'>resume_task</span><span class='lparen'>(</span><span class='id identifier rubyid_task_id'>task_id</span><span class='comma'>,</span> <span class='id identifier rubyid_level'>level</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>family</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/pause/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_task_id'>task_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/pause/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_task_id'>task_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>paused</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>level</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_level'>level</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -3078,8 +3073,7 @@ the task and it&#39;s children or just the task</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Terminates a specific task identified by its task id. This will terminate
-the task and its children</p>
+<p>Terminates a specific task identified by its task id. This will terminate the task and its children</p>
 
 
   </div>
@@ -3312,9 +3306,9 @@ the task and its children</p>
 </div>
 
       <div id="footer">
-  Generated on Fri Oct 30 13:23:23 2020 by
+  Generated on Fri Nov  6 08:13:04 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.20 (ruby-2.5.1).
+  0.9.25 (ruby-2.6.6).
 </div>
 
     </div>

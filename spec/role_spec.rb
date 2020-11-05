@@ -56,7 +56,7 @@ describe SFRest::Role do
     role = { 'role_id' => role_ary[0], 'role_name' => role_ary[1] }
     roleid = role_ary[0]
     it 'can get a role data' do
-      stub_factory '/api/v1/roles/' + roleid.to_s, role.to_json
+      stub_factory "/api/v1/roles/#{roleid}", role.to_json
       @conn.role.role_data(roleid).inspect
       expect(@conn.role.role_data(roleid)['role_id']).to eq roleid
     end

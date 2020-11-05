@@ -51,7 +51,7 @@ describe SFRest::Site do
     site = generate_site_data
     siteid = site['id']
     it 'can get a site data' do
-      stub_factory '/api/v1/sites/' + siteid.to_s, site.to_json
+      stub_factory "/api/v1/sites/#{siteid}", site.to_json
       expect(@conn.site.get_site_data(siteid)['id']).to eq siteid
     end
   end
@@ -109,7 +109,7 @@ describe SFRest::Site do
     site_name = site_data['site']
     task_id = site_data['task_id']
     it 'can delete a site' do
-      stub_factory '/api/v1/sites/' + site_id.to_s, site_data.to_json
+      stub_factory "/api/v1/sites/#{site_id}", site_data.to_json
       res = @conn.site.delete site_id
       expect(res['site']).to eq site_name
       expect(res['task_id']).to eq task_id

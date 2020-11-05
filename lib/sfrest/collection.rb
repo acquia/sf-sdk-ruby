@@ -14,14 +14,14 @@ module SFRest
     # @return [Integer] the id of sitename
     def get_collection_id(name)
       pglimit = 100
-      res = @conn.get('/api/v1/collections&limit=' + pglimit.to_s)
+      res = @conn.get("/api/v1/collections&limit=#{pglimit}")
       count = res['count'].to_i
       id = collection_data_from_results(res, name, 'id')
       return id if id
 
       pages = (count / pglimit) + 1
       2.upto(pages) do |i|
-        res = @conn.get('/api/v1/collections&limit=' + pglimit.to_s + '?page=' + i.to_s)
+        res = @conn.get("/api/v1/collections&limit=#{pglimit}?page=#{i}")
         id = collection_data_from_results(res, name, 'id')
         return id if id
       end
@@ -45,7 +45,7 @@ module SFRest
     # @param [Integer] id the site id
     # @return [Hash]
     def get_collection_data(id)
-      @conn.get('/api/v1/collections/' + id.to_s)
+      @conn.get("/api/v1/collections/#{id}")
     end
 
     # gets the site id of the 1st one found using the api

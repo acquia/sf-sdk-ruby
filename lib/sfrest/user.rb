@@ -16,7 +16,7 @@ module SFRest
       not_done = true
       count = 0
       while not_done
-        current_path = '/api/v1/users?page=' + page.to_s
+        current_path = "/api/v1/users?page=#{page}"
         res = @conn.get(current_path)
         if res['users'] == []
           not_done = false
@@ -41,14 +41,14 @@ module SFRest
     # @return [Integer] the uid of the drupal user
     def get_user_id(username)
       pglimit = 100
-      res = @conn.get('/api/v1/users&limit=' + pglimit.to_s)
+      res = @conn.get("/api/v1/users&limit=#{pglimit}")
       usercount = res['count'].to_i
       id = user_data_from_results(res, username, 'uid')
       return id if id
 
       pages = (usercount / pglimit) + 1
       2.upto(pages) do |i|
-        res = @conn.get('/api/v1/users&limit=' + pglimit.to_s + '?page=' + i.to_s)
+        res = @conn.get("/api/v1/users&limit=#{pglimit}?page=#{i}")
         id = user_data_from_results(res, username, 'uid')
         return id if id
       end
@@ -72,7 +72,7 @@ module SFRest
     # @param [int] uid site id
     # @return [Hash]
     def get_user_data(uid)
-      @conn.get('/api/v1/users/' + uid.to_s)
+      @conn.get("/api/v1/users/#{uid}")
     end
 
     # Creates a user.

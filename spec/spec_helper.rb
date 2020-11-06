@@ -3,7 +3,7 @@
 require 'coveralls'
 Coveralls.wear!
 
-Dir[File.dirname(__FILE__) + '../lib/**/*.rb'].each do |f|
+Dir["#{File.dirname(__FILE__)}../lib/**/*.rb"].sort.each do |f|
   puts "adding file #{f}"
   require f
 end
@@ -55,10 +55,11 @@ end
 # webmock generators
 def stub_factory(path = nil, return_body = nil, status = 200)
   return_data = { status: status }
-  if return_body.is_a? Array
+  case return_body
+  when Array
     return_data = []
     return_body.each { |body| return_data.push(status: status, body: body) }
-  elsif return_body.is_a? Hash
+  when Hash
     return_data = return_body
   else
     return_data[:body] = return_body
@@ -82,8 +83,7 @@ def generate_domains
   domain_count = rand(1..3)
   domains = []
   domain_count.times do |i|
-    domains[i] = SecureRandom.urlsafe_base64(5) + '.' +
-                 SecureRandom.urlsafe_base64(5) + '.com'
+    domains[i] = "#{SecureRandom.urlsafe_base64(5)}.#{SecureRandom.urlsafe_base64(5)}.com"
   end
   domains
 end
@@ -276,8 +276,7 @@ def generate_site_creation_data
   domain_count = rand(1..3)
   domains = []
   domain_count.times do |i|
-    domains[i] = SecureRandom.urlsafe_base64(5) + '.' +
-                 SecureRandom.urlsafe_base64(5) + '.com'
+    domains[i] = "#{SecureRandom.urlsafe_base64(5)}.#{SecureRandom.urlsafe_base64(5)}.com"
   end
   { 'id' => rand(1000), 'site' => SecureRandom.urlsafe_base64, 'domains' => domains, 'groups' => groups }
 end
@@ -363,7 +362,7 @@ end
 # see generate_task_id
 def generate_backup_url_data
   { 'lifetime' => rand(1000),
-    'url' => 'https://' + SecureRandom.urlsafe_base64(4) + '.' + SecureRandom.urlsafe_base64 + '.com' }
+    'url' => "https://#{SecureRandom.urlsafe_base64(4)}.#{SecureRandom.urlsafe_base64}.com" }
 end
 
 # backup delete data
@@ -497,7 +496,7 @@ def generate_user_data
   uid = rand(1000).to_i
   created = time_rand
   accessed = time_rand + rand(10**5)
-  mail = SecureRandom.urlsafe_base64 + '@example.com'
+  mail = "#{SecureRandom.urlsafe_base64}@example.com"
   name = SecureRandom.urlsafe_base64
   role_count = rand(1..3)
   roles = role_candidates.to_a.sample(role_count).to_h

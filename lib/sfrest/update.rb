@@ -26,7 +26,7 @@ module SFRest
 
     # Lists vcs refs.
     def list_vcs_refs(type = 'sites', stack_id = 1)
-      current_path = '/api/v1/vcs?type=' + type + '&stack_id=' + stack_id.to_s
+      current_path = "/api/v1/vcs?type=#{type}&stack_id=#{stack_id}"
       @conn.get(current_path)
     end
 
@@ -71,7 +71,7 @@ module SFRest
 
     # Gets the progress of an update by id.
     def update_progress(update_id)
-      current_path = '/api/v1/update/' + update_id.to_s + '/status'
+      current_path = "/api/v1/update/#{update_id}/status"
       @conn.get(current_path)
     end
 
@@ -109,7 +109,7 @@ module SFRest
       begin
         @conn.post '/api/v2/update', '{}'
       rescue SFRest::BadRequestError
-        return @has_v2_endpoint = true
+        @has_v2_endpoint = true
       rescue SFRest::InvalidResponse => e
         return @has_v2_endpoint = false if e.message =~ /Invalid data, status 404/
 

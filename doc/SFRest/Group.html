@@ -6,15 +6,15 @@
 <title>
   Class: SFRest::Group
   
-    &mdash; Documentation by YARD 0.9.20
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "SFRest::Group";
   relpath = '../';
 </script>
@@ -287,8 +287,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>gets the group ID for the group named groupname will page through all the
-groups available searching for the group.</p>
+<p>gets the group ID for the group named groupname will page through all the groups available searching for the group.</p>
 </div></span>
   
 </li>
@@ -506,7 +505,7 @@ groups available searching for the group.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of Group</p>
+<p>Returns a new instance of Group.</p>
 
 
   </div>
@@ -647,7 +646,7 @@ groups available searching for the group.</p>
       <pre class="code"><span class="info file"># File 'lib/sfrest/group.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_members'>add_members</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_uids'>uids</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/groups/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/members</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_group_id'>group_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/members</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>uids</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_uids'>uids</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:to_i</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -746,7 +745,7 @@ groups available searching for the group.</p>
       <pre class="code"><span class="info file"># File 'lib/sfrest/group.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_sites'>add_sites</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_site_ids'>site_ids</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/groups/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/sites</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_group_id'>group_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/sites</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>site_ids</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_site_ids'>site_ids</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -767,8 +766,7 @@ groups available searching for the group.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Creates a site group with specified group name. This currently will only
-create a group in the root</p>
+<p>Creates a site group with specified group name. This currently will only create a group in the root</p>
 
 
   </div>
@@ -876,7 +874,7 @@ create a group in the root</p>
       <pre class="code"><span class="info file"># File 'lib/sfrest/group.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_group'>delete_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/groups/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_group_id'>group_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -974,7 +972,7 @@ create a group in the root</p>
       <pre class="code"><span class="info file"># File 'lib/sfrest/group.rb', line 86</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_demote_from_admins'>demote_from_admins</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_uids'>uids</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/groups/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/admins</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_group_id'>group_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/admins</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>uids</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_uids'>uids</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:to_i</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -1058,7 +1056,7 @@ create a group in the root</p>
       <pre class="code"><span class="info file"># File 'lib/sfrest/group.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_group'>get_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span> <span class='op'>=</span> <span class='int'>0</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/groups/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_group_id'>group_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1078,8 +1076,7 @@ create a group in the root</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>gets the group ID for the group named groupname will page through all the
-groups available searching for the group</p>
+<p>gets the group ID for the group named groupname will page through all the groups available searching for the group</p>
 
 
   </div>
@@ -1225,7 +1222,7 @@ groups available searching for the group</p>
       <pre class="code"><span class="info file"># File 'lib/sfrest/group.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_members'>get_members</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span> <span class='op'>=</span> <span class='int'>0</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/groups/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/members</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_group_id'>group_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/members</span><span class='tstring_end'>&quot;</span></span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1378,8 +1375,7 @@ groups available searching for the group</p>
       
         &mdash;
         <div class='inline'>
-<p>all the groups on the factory plus a count {&#39;count&#39; =&gt; count,
-&#39;groups&#39; =&gt; Hash }</p>
+<p>all the groups on the factory plus a count {&#39;count&#39; =&gt; count, &#39;groups&#39; =&gt; Hash }</p>
 </div>
       
     </li>
@@ -1537,7 +1533,7 @@ groups available searching for the group</p>
       <pre class="code"><span class="info file"># File 'lib/sfrest/group.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_promote_to_admins'>promote_to_admins</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_uids'>uids</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/groups/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/admins</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_group_id'>group_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/admins</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>uids</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_uids'>uids</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:to_i</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -1636,7 +1632,7 @@ groups available searching for the group</p>
       <pre class="code"><span class="info file"># File 'lib/sfrest/group.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_remove_members'>remove_members</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_uids'>uids</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/groups/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/members</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_group_id'>group_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/members</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>uids</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_uids'>uids</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:to_i</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -1712,8 +1708,7 @@ groups available searching for the group</p>
       
         &mdash;
         <div class='inline'>
-<p>=&gt; 123, &#39;site_ids_removed&#39; =&gt; [1, 2, …],
-&#39;site_ids_failed&#39; =&gt; [3, 4, …]</p>
+<p>=&gt; 123, &#39;site_ids_removed&#39; =&gt; [1, 2, …], &#39;site_ids_failed&#39; =&gt; [3, 4, …]</p>
 </div>
       
     </li>
@@ -1736,7 +1731,7 @@ groups available searching for the group</p>
       <pre class="code"><span class="info file"># File 'lib/sfrest/group.rb', line 106</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_remove_sites'>remove_sites</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_site_ids'>site_ids</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/groups/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/sites</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_group_id'>group_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/sites</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>site_ids</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_site_ids'>site_ids</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -1817,7 +1812,7 @@ groups available searching for the group</p>
       <pre class="code"><span class="info file"># File 'lib/sfrest/group.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rename_group'>rename_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_groupname'>groupname</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/groups/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/update</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_group_id'>group_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/update</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>group_name</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_groupname'>groupname</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_put'>put</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -1831,9 +1826,9 @@ groups available searching for the group</p>
 </div>
 
       <div id="footer">
-  Generated on Fri Oct 30 13:23:24 2020 by
+  Generated on Fri Nov  6 08:13:04 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.20 (ruby-2.5.1).
+  0.9.25 (ruby-2.6.6).
 </div>
 
     </div>

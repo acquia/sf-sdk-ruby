@@ -52,7 +52,7 @@ describe SFRest::User do
     user = generate_user_data
     userid = user['uid']
     it 'can get a user data' do
-      stub_factory '/api/v1/users/' + userid.to_s, user.to_json
+      stub_factory "/api/v1/users/#{userid}", user.to_json
       expect(@conn.user.get_user_data(userid)['uid']).to eq userid
     end
   end
@@ -89,7 +89,7 @@ describe SFRest::User do
         .with(headers: @mock_headers)
         .to_return { |request| { body: { uri: request.uri, body: request.body, method: request.method }.to_json } }
       uname = SecureRandom.urlsafe_base64
-      umail = SecureRandom.urlsafe_base64 + '@example.com'
+      umail = "#{SecureRandom.urlsafe_base64}@example.com"
       res = @conn.user.create_user uname, umail
       uri = URI res['uri']
       expect(uri.path).to eq path
@@ -119,7 +119,7 @@ describe SFRest::User do
         .to_return { |request| { body: { uri: request.uri, body: request.body, method: request.method }.to_json } }
       uid = rand 1000
       uname = SecureRandom.urlsafe_base64
-      umail = SecureRandom.urlsafe_base64 + '@example.com'
+      umail = "#{SecureRandom.urlsafe_base64}@example.com"
       datum = { name: uname, mail: umail }
       res = @conn.user.update_user uid, datum
       uri = URI res['uri']

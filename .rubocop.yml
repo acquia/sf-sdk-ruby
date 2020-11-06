@@ -1,10 +1,11 @@
 ---
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.5
   Exclude:
     - '*.gemspec'
     - 'vendor/**/*'
     - 'sample/bin/aws-codedeploy-samples/**/*'
+  NewCops: enable
 Metrics/AbcSize:
   Max: 40
 Metrics/BlockLength:
@@ -15,7 +16,7 @@ Metrics/ClassLength:
   Max: 300
 Metrics/MethodLength:
   Max: 30
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 Style/ClassAndModuleChildren:
   Enabled: false

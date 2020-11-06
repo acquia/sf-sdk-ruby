@@ -42,7 +42,7 @@ module SFRest
                       user: username,
                       password: password,
                       ssl_verify_peer: false)
-      api_response res, true
+      api_response res, return_status: true
     end
 
     # http request via post
@@ -100,7 +100,7 @@ module SFRest
     #                  with the reponse
     # @return [Array|Object] if return_status then [int, Object]
     #                        else Object
-    def api_response(res, return_status = false)
+    def api_response(res, return_status: false)
       data = access_check JSON(res.body), res.status
       return_status ? [res.status, data] : data
     rescue JSON::ParserError

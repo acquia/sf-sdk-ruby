@@ -37,11 +37,11 @@ module SFRest
     # @return [Integer] Id of the staging task created.
     # rubocop:disable Metrics/ParameterLists
     def enhanced_stage(env: 'test',
-                       sites: nil,
+                       sites: [],
                        email_site_status: false,
                        wipe_target_environment: false,
                        synchronize_all_users: true,
-                       wipe_stacks: nil)
+                       wipe_stacks: [])
       raise InvalidApiVersion, staging_versions unless staging_versions.include? 2
 
       payload = { 'to_env' => env, 'sites' => sites,

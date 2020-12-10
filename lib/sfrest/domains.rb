@@ -61,5 +61,23 @@ module SFRest
       payload = { 'domain_name' => domain_name }.to_json
       @conn.post("/api/v1/domains/#{node_id}/remove", payload)
     end
+
+    # Get domain status
+    # @param [String] domain_name domain to remove. e.g. www.example.com
+    #
+    # @return [Hash] {  "message" => "The domain is associated with the node.",
+    #   "is_domain_associated" => TRUE,
+    #   "node_id" => 123,
+    #   "node_type" => "site",
+    #   "time" => "2016-10-28T09:25:26+00:00",
+    #   "stack_id" => 1,
+    #   "domains" => array(
+    #      "protected_domains" => array('site.example.sfdev.acquia-test.co'),
+    #       "custom_domains" => array('www.abc.com/def', 'www.xyz.com'),
+    #   ) }
+    def status(domain_name)
+      payload = { 'domain_name' => domain_name }.to_json
+      @conn.post("/api/v1/domains/status/{domain_name}", payload)
+    end
   end
 end

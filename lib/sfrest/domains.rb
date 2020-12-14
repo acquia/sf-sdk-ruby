@@ -77,7 +77,7 @@ module SFRest
     #   ) }
     def status(domain_name)
       payload = { 'domain_name' => domain_name }.to_json
-      @conn.post("/api/v1/domains/status/{domain_name}", payload)
+      @conn.post('/api/v1/domains/status/{domain_name}', payload)
     end
   end
 end

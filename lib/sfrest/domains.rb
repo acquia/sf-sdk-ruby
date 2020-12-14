@@ -76,7 +76,7 @@ module SFRest
     #       "custom_domains" => array('www.abc.com/def', 'www.xyz.com'),
     #   ) }
     def status(domain_name)
-      @conn.get('/api/v1/domains/status/#{domain_name}', payload)
+      @conn.get('/api/v1/domains/status/#{domain_name}')
     end
   end
 end

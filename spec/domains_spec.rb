@@ -62,4 +62,18 @@ describe SFRest::Domains do
       expect(@conn.domains.remove(nid, domain)['domain']).to eq domain
     end
   end
+
+  describe '#get_domain_status' do
+    domain = "#{SecureRandom.urlsafe_base64(5)}.#{SecureRandom.urlsafe_base64(5)}.com"
+    path = "/api/v1/domains/status/#{domain}"
+    it 'gets the domain status' do
+      nid = rand 10**5
+      stub_factory path, [{ associated_status: 'registered',
+                            domain_name: domain,
+                            node_id: nid,
+                            node_type: 'site',
+                            stack_id: 1 }.to_json]
+      expect(@conn.domains.status(domain)['associated_status']).to eq 'registered'
+    end
+  end
 end

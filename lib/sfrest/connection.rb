@@ -104,7 +104,7 @@ module SFRest
       data = access_check JSON(res.body), res.status
       return_status ? [res.status, data] : data
     rescue JSON::ParserError
-      message = "Invalid data, status #{res.status}, body: #{res.body}"
+      message = "#{Time.now} Invalid data, status #{res.status}, body: #{res.body}"
       raise SFRest::InvalidResponse, message
     end
 

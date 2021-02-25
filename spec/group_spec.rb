@@ -292,7 +292,7 @@ describe SFRest::Group do
       .to_return { |request| { body: { uri: request.uri, body: request.body, method: request.method }.to_json } }
   end
 
-  describe '#get_sites' do
+  describe '#sites' do
     path = '/api/v1/groups'
 
     it 'calls the get sites endpoint' do
@@ -300,7 +300,7 @@ describe SFRest::Group do
         .with(headers: @mock_headers)
         .to_return { |request| { body: { uri: request.uri, body: request.body, method: request.method }.to_json } }
       gid = rand 10**5
-      res = @conn.group.get_sites gid
+      res = @conn.group.sites gid
       uri = URI res['uri']
       expect(uri.path).to eq "#{path}/#{gid}/sites"
       expect(res['method']).to eq 'get'

@@ -6,7 +6,7 @@ lib/sfrest/task.rb 1185c121635cf0849cb9185dcfb366930a8ea971
 lib/sfrest/user.rb c00d77c9be76b447b3c5410624d106f638840721
 lib/sfrest/audit.rb 83b4ed11bb31fb500d59f98b573afd1be7686887
 lib/sfrest/error.rb 11e22e8c019e8ed00d3f8830db3f8c1b304d37ca
-lib/sfrest/group.rb a172c627e3b3d4df4cda3355d7f3861ef6bbc5e5
+lib/sfrest/group.rb 673058253fb7d9d1eec45a2b3f2735377a32203d
 lib/sfrest/stage.rb f91222a5058f9d83ad6854e146a312b584654e04
 lib/sfrest/theme.rb 4f51f2ad5e186c3e0afae4e2456a6eedee1130b1
 lib/sfrest/usage.rb f32860fbf0610704e4033aec1383f57e3ac2941a

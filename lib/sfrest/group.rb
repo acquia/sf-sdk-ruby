@@ -159,5 +159,13 @@ module SFRest
       end
       nil
     end
+
+    # Returns sites belonging to a specified group id.
+    # @param [Integer] group_id Id of the group to fetch
+    # @return [Hash] {'count' => count, 'sites' => Hash }
+    def sites(group_id = 0)
+      current_path = "/api/v1/groups/#{group_id}/sites"
+      @conn.get(current_path)
+    end
   end
 end

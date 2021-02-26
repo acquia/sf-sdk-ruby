@@ -2,5 +2,5 @@
 
 module SFRest
   # Just tracks the version of sfrest.
-  VERSION = '0.0.32'
+  VERSION = '0.0.33'
 end

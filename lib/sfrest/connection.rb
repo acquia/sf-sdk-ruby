@@ -169,6 +169,7 @@ module SFRest
                       domains
                       group
                       info
+                      profile
                       role
                       site
                       stage

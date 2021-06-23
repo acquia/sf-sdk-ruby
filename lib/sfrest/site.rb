@@ -55,20 +55,21 @@ module SFRest
       res['sites'].first['id']
     end
 
-    # Gets the complete list of sites
-    # Makes multiple requests to the factory to get all the sites on the factory
-    # @param [Boolean] show_incomplete whether to include incomplete sites in
-    #   the list. The default differs from UI/SF to maintain backward compatibility.
+    # Gets the complete list of sites.
+    #
+    # Makes multiple requests to the factory to get all the sites on the
+    # factory.
+    #
+    # @param [Hash] opts query parameters to be used in this request.
     # @return [Hash{'count' => Integer, 'sites' => Hash}]
-    # rubocop: disable Style/OptionalBooleanParameter
-    def site_list(show_incomplete = true)
+    def site_list(**opts)
       page = 1
       not_done = true
       count = 0
       sites = []
       while not_done
-        current_path = '/api/v1/sites?page='.dup << page.to_s
-        current_path <<= '&show_incomplete=true' if show_incomplete
+        opts['page'] = page
+        current_path = "/api/v1/sites?#{URI.encode_www_form(opts)}"
         res = @conn.get(current_path)
         if res['sites'] == []
           not_done = false
@@ -86,7 +87,6 @@ module SFRest
       end
       { 'count' => count, 'sites' => sites }
     end
-    # rubocop: enable Style/OptionalBooleanParameter
 
     # Creates a site.
     # @param [String] sitename The name of the site to create.

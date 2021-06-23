@@ -85,6 +85,14 @@ describe SFRest::Site do
       expect(res['sites']).to eq sites + sites2
     end
 
+    it 'can request a filter on a set of sites data' do
+      # Mock the return value so that #site_list exists properly.
+      expect(@conn).to receive(:get)
+        .with('/api/v1/sites?show_incomplete=true&stack_id=2&page=1')
+        .and_return({ 'count' => 0, 'sites' => [] })
+      @conn.site.site_list({ show_incomplete: true, stack_id: 2 })
+    end
+
     it 'returns the error message from the api' do
       stub_factory '/api/v1/sites', { 'message' => 'Danger Will Robinson!' }.to_json
       res = @conn.site.site_list

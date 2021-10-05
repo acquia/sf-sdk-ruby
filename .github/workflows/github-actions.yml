@@ -1,0 +1,12 @@
+name: GitHub Actions
+on: [push]
+jobs:
+ build:
+   runs-on: ubuntu-latest 
+   strategy:
+      matrix:
+        ruby: [2.5, 2.6, 2.7]
+   steps:
+   - name: Run tests
+     run: bundle exec rake
+# TODO: coveralls token

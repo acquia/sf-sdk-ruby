@@ -1,0 +1,12 @@
+ARG BASE_IMAGE=ruby:2.6
+ARG REPO_LOCATION
+FROM ${REPO_LOCATION}${BASE_IMAGE}
+
+WORKDIR /sf-sdk-ruby
+
+RUN gem install bundler:2.1.4 \
+    && gem update --system
+
+COPY . ./
+
+RUN bundle install

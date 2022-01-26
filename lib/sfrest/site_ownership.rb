@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module SFRest
-  # We need to keep this naming due to the way  connection.rb autoloads things.
+  # We need to keep this naming due to the way connection.rb autoloads things.
   # rubocop: disable Naming/ClassAndModuleCamelCase
   # Manage the site default ownership feature.
   class Site_ownership
@@ -29,6 +29,13 @@ module SFRest
       payload['username'] = username unless username.nil?
 
       @conn.post('/api/v1/site-ownership', payload.to_json)
+    end
+
+    # Removes the default site owner.
+    #
+    # @return [Array] an array containing the message given by the server.
+    def remove_default_owner
+      @conn.post('/api/v1/site-ownership', {}.to_json)
     end
   end
 end

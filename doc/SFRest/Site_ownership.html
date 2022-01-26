@@ -102,7 +102,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>We need to keep this naming due to the way  connection.rb autoloads things. rubocop: disable Naming/ClassAndModuleCamelCase Manage the site default ownership feature.</p>
+<p>We need to keep this naming due to the way connection.rb autoloads things. rubocop: disable Naming/ClassAndModuleCamelCase Manage the site default ownership feature.</p>
 
 
   </div>
@@ -194,6 +194,30 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Set the site ownership settings.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_default_owner-instance_method" title="#remove_default_owner (instance method)">#<strong>remove_default_owner</strong>  &#x21d2; Array </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Removes the default site owner.</p>
 </div></span>
   
 </li>
@@ -412,12 +436,71 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="remove_default_owner-instance_method">
+  
+    #<strong>remove_default_owner</strong>  &#x21d2; <tt>Array</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Removes the default site owner.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>an array containing the message given by the server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/site_ownership.rb', line 37</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_default_owner'>remove_default_owner</span>
+  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/site-ownership</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
       <div id="footer">
-  Generated on Thu Jan 20 14:12:29 2022 by
+  Generated on Wed Jan 26 10:08:48 2022 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.6.3).
 </div>

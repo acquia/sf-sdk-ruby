@@ -20,22 +20,22 @@ module SFRest
     end
 
     # Set the site ownership settings.
-    # @param [String] The default owner username. The user has to have the "Platform admin" role. If it's not set, the
-    # feature will be disabled.
+    # @param [String] The default owner username. The user has to have the "Platform admin" role.
     #
     # @return [Array] an array containing the message given by the server.
-    def make_default_owner(username = nil)
-      payload = {}
-      payload['username'] = username unless username.nil?
+    def make_default_owner(username)
+      payload = {
+        'username' => username
+      }
 
-      @conn.post('/api/v1/site-ownership', payload.to_json)
+      @conn.put('/api/v1/site-ownership', payload.to_json)
     end
 
     # Removes the default site owner.
     #
     # @return [Array] an array containing the message given by the server.
     def remove_default_owner
-      @conn.post('/api/v1/site-ownership', {}.to_json)
+      @conn.delete('/api/v1/site-ownership')
     end
   end
 end

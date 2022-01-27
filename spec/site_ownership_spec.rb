@@ -24,36 +24,29 @@ describe SFRest::Site_ownership do
   describe '#set_role_mappings' do
     path = '/api/v1/site-ownership'
 
-    it 'calls the site ownership post endpoint with a username' do
+    it 'calls the site ownership put endpoint with a username' do
       stub_request(:any, /.*#{@mock_endpoint}.*#{path}/)
         .with(headers: @mock_headers)
         .to_return { |request| { body: { uri: request.uri, body: request.body, method: request.method }.to_json } }
       res = @conn.site_ownership.make_default_owner('john.doe')
       uri = URI res['uri']
       expect(uri.path).to eq path
-      expect(res['method']).to eq 'post'
+      expect(res['method']).to eq 'put'
       expect(JSON(res['body'])['username']).to eq 'john.doe'
     end
+  end
 
-    it 'calls the site ownership post endpoint with no username' do
-      stub_request(:any, /.*#{@mock_endpoint}.*#{path}/)
-        .with(headers: @mock_headers)
-        .to_return { |request| { body: { uri: request.uri, body: request.body, method: request.method }.to_json } }
-      res = @conn.site_ownership.make_default_owner
-      uri = URI res['uri']
-      expect(uri.path).to eq path
-      expect(res['method']).to eq 'post'
-      expect(JSON(res['body'])['username']).to be nil
-    end
+  describe '#remove_role_mappings' do
+    path = '/api/v1/site-ownership'
 
-    it 'calls the site ownership post endpoint and removes the owner' do
+    it 'calls the site ownership delete endpoint and removes the owner' do
       stub_request(:any, /.*#{@mock_endpoint}.*#{path}/)
         .with(headers: @mock_headers)
         .to_return { |request| { body: { uri: request.uri, method: request.method }.to_json } }
       res = @conn.site_ownership.remove_default_owner
       uri = URI res['uri']
       expect(uri.path).to eq path
-      expect(res['method']).to eq 'post'
+      expect(res['method']).to eq 'delete'
     end
   end
 end

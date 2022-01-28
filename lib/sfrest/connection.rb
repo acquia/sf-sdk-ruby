@@ -172,6 +172,7 @@ module SFRest
                       profile
                       role
                       site
+                      site_ownership
                       stage
                       task
                       theme

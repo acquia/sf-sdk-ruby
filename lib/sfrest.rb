@@ -10,6 +10,7 @@ require 'json'
 
 require 'sfrest/audit'
 require 'sfrest/backup'
+require 'sfrest/centralized_role_management'
 require 'sfrest/codebase'
 require 'sfrest/collection'
 require 'sfrest/connection'

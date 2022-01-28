@@ -164,6 +164,7 @@ module SFRest
     # NOTE: accessor == Class_name.to_lower
     REST_METHODS = %w[audit
                       backup
+                      centralized_role_management
                       codebase
                       collection
                       domains

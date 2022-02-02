@@ -34,6 +34,7 @@ module SFRest
     # @param [synchronize_all_users] only stage the user accounts required for the related collections and groups
     # @param [Array] Stacks Array of stack ids to wipe
     # @param [Boolean] skip_site_files site skip file transfer during staging
+    # @param [Array] skip_site_files_overwrite list of files to skip during staging
     #
     # @return [Integer] Id of the staging task created.
     # rubocop:disable Metrics/ParameterLists
@@ -43,7 +44,8 @@ module SFRest
                        wipe_target_environment: false,
                        synchronize_all_users: true,
                        wipe_stacks: [],
-                       skip_site_files: false)
+                       skip_site_files: false,
+                       skip_site_files_overwrite: [])
       raise InvalidApiVersion, staging_versions unless staging_versions.include? 2
 
       payload = { 'to_env' => env, 'sites' => sites,
@@ -51,7 +53,8 @@ module SFRest
                   'wipe_target_environment' => wipe_target_environment,
                   'synchronize_all_users' => synchronize_all_users,
                   'wipe_stacks' => wipe_stacks,
-                  'skip_site_files' => skip_site_files }.to_json
+                  'skip_site_files' => skip_site_files,
+                  'skip_site_files_overwrite' => skip_site_files_overwrite }.to_json
       @conn.post('/api/v2/stage', payload)
     end
     # rubocop:enable Metrics/ParameterLists

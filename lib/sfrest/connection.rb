@@ -167,6 +167,7 @@ module SFRest
                       centralized_role_management
                       codebase
                       collection
+                      cron
                       domains
                       group
                       info

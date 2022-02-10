@@ -13,9 +13,9 @@ module SFRest
     # @param [Integer] items per page
     def get_cron_jobs(page = nil, limit = nil)
       args = {}
- 		  args['page'] = page unless (page.nil?)
- 		  args['limit'] = limit unless (limit.nil?)
- 		  url = "/api/v1/cronjobs" + '?' + args.map{|k,v| "#{k}=#{v}"}.join('&')
+      args['page'] = page unless page.nil?
+      args['limit'] = limit unless limit.nil?
+      url = "/api/v1/cronjobs?#{args.map { |k, v| "#{k}=#{v}" }.join('&')}"
       @conn.get(url)
     end
 
@@ -24,6 +24,5 @@ module SFRest
     def get_cron_job(nid)
       @conn.get("/api/v1/cronjobs/#{nid}")
     end
-
   end
 end

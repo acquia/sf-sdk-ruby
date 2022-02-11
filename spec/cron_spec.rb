@@ -38,6 +38,11 @@ describe SFRest::Cron do
       stub_factory path, data.to_json
       expect(@conn.cron.get_cron_jobs).to eq data
     end
+
+    it 'handles arguments correctly' do
+      expect(@conn).to receive(:get).with('/api/v1/cronjobs?page=5&limit=6')
+      @conn.cron.get_cron_jobs(5,6)
+    end
   end
 
   describe '#get_cron_job' do

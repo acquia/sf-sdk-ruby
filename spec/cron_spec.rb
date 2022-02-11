@@ -14,13 +14,13 @@ describe SFRest::Cron do
       'count' => 7,
       'cronjobs' => [
         {
-        'nid' => 101,
-        'name' => 'cron job 1',
-        'stacks' => [1, 2],
-        'sites_affected' => 'dev-sites',
-        'interval' => '14 0,12 * * *',
-        'drush_command' => 'cron',
-        'thread_percentage' => 60,
+          'nid' => 101,
+          'name' => 'cron job 1',
+          'stacks' => [1, 2],
+          'sites_affected' => 'dev-sites',
+          'interval' => '14 0,12 * * *',
+          'drush_command' => 'cron',
+          'thread_percentage' => 60
         },
         {
           'nid' => 102,
@@ -29,8 +29,8 @@ describe SFRest::Cron do
           'sites_affected' => 'all',
           'interval' => '0 0 1 1 *',
           'drush_command' => 'cron',
-          'thread_percentage' => 40,
-        },
+          'thread_percentage' => 40
+        }
       ]
     }
 
@@ -41,7 +41,7 @@ describe SFRest::Cron do
 
     it 'handles arguments correctly' do
       expect(@conn).to receive(:get).with('/api/v1/cronjobs?page=5&limit=6')
-      @conn.cron.get_cron_jobs(5,6)
+      @conn.cron.get_cron_jobs(5, 6)
     end
   end
 
@@ -53,7 +53,7 @@ describe SFRest::Cron do
       'sites_affected' => 'dev-sites',
       'interval' => '14 0,12 * * *',
       'drush_command' => 'cron',
-      'thread_percentage' => 60,
+      'thread_percentage' => 60
     }
 
     it 'gets an individual cron job by its id' do
@@ -62,5 +62,4 @@ describe SFRest::Cron do
       expect(@conn.cron.get_cron_job(id)).to eq data
     end
   end
-
 end

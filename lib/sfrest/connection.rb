@@ -168,6 +168,7 @@ module SFRest
                       codebase
                       collection
                       cron
+                      customer_standard_domain
                       domains
                       group
                       info

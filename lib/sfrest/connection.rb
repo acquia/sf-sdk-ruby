@@ -169,6 +169,7 @@ module SFRest
                       collection
                       cron
                       domains
+                      factory_standard_domain
                       group
                       info
                       profile

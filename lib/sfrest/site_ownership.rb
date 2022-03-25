@@ -37,5 +37,19 @@ module SFRest
     def remove_default_owner
       @conn.delete('/api/v1/site-ownership')
     end
+
+    # Transfers site ownership.
+    # @param [Integer] site id.
+    # @param [String] username.
+    # @param [String] email.
+    #
+    # @return [Array] an array containing the message given by the server.
+    def transfer_site_owner(site_id)
+      payload = {
+        'username' => username
+      }
+
+      @conn.post('/api/v1/site-ownership/#{site_id}', payload.to_json)
+    end
   end
 end

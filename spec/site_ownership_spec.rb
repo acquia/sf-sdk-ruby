@@ -58,7 +58,7 @@ describe SFRest::Site_ownership do
       stub_request(:any, /.*#{@mock_endpoint}.*#{path}/)
         .with(headers: @mock_headers)
         .to_return { |request| { body: { uri: request.uri, body: request.body, method: request.method }.to_json } }
-      res = @conn.site_ownership.transfer_site_owners(id, 'john.dee')
+      res = @conn.site_ownership.transfer_site_owner(id, 'john.dee')
       uri = URI res['uri']
       expect(uri.path).to eq path
       expect(res['method']).to eq 'post'

@@ -44,7 +44,7 @@ module SFRest
     # @param [String] email.
     #
     # @return [Array] an array containing the message given by the server.
-    def transfer_site_owner(site_id)
+    def transfer_site_owner(site_id, username)
       payload = {
         'username' => username
       }

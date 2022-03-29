@@ -49,7 +49,7 @@ module SFRest
         'username' => username
       }
 
-      @conn.post('/api/v1/site-ownership/#{site_id}', payload.to_json)
+      res = @conn.post("/api/v1/site-ownership/#{site_id}", payload.to_json)
     end
   end
 end

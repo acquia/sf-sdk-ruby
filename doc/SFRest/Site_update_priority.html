@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Class: SFRest::Site_ownership
+  Class: SFRest::Site_update_priority
   
     &mdash; Documentation by YARD 0.9.25
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
 <script type="text/javascript">
-  pathId = "SFRest::Site_ownership";
+  pathId = "SFRest::Site_update_priority";
   relpath = '../';
 </script>
 
@@ -39,7 +39,7 @@
     <a href="../_index.html">Index (S)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../SFRest.html" title="SFRest (module)">SFRest</a></span></span>
      &raquo; 
-    <span class="title">Site_ownership</span>
+    <span class="title">Site_update_priority</span>
   
 </div>
 
@@ -59,7 +59,7 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><h1>Class: SFRest::Site_ownership
+      <div id="content"><h1>Class: SFRest::Site_update_priority
   
   
   
@@ -74,7 +74,7 @@
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next">SFRest::Site_ownership</li>
+            <li class="next">SFRest::Site_update_priority</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -94,7 +94,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/sfrest/site_ownership.rb</dd>
+    <dd>lib/sfrest/site_update_priority.rb</dd>
   </dl>
   
 </div>
@@ -102,7 +102,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>We need to keep this naming due to the way connection.rb autoloads things. rubocop: disable Naming/ClassAndModuleCamelCase Manage the site default ownership feature.</p>
+<p>We need to keep this naming due to the way connection.rb autoloads things. rubocop: disable Naming/ClassAndModuleCamelCase Manage the site update priority feature.</p>
 
 
   </div>
@@ -128,7 +128,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#default_ownership-instance_method" title="#default_ownership (instance method)">#<strong>default_ownership</strong>  &#x21d2; Array </a>
+      <a href="#change_update_priority-instance_method" title="#change_update_priority (instance method)">#<strong>change_update_priority</strong>(priority)  &#x21d2; Array </a>
     
 
     
@@ -143,7 +143,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Get current site ownership settings.</p>
+<p>Set the site update priority list.</p>
 </div></span>
   
 </li>
@@ -152,7 +152,31 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(conn)  &#x21d2; Site_ownership </a>
+      <a href="#current_update_priority-instance_method" title="#current_update_priority (instance method)">#<strong>current_update_priority</strong>  &#x21d2; Array </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get current site update priority.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(conn)  &#x21d2; Site_update_priority </a>
     
 
     
@@ -169,7 +193,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of Site_ownership.</p>
+<p>A new instance of Site_update_priority.</p>
 </div></span>
   
 </li>
@@ -178,7 +202,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#make_default_owner-instance_method" title="#make_default_owner (instance method)">#<strong>make_default_owner</strong>(username)  &#x21d2; Array </a>
+      <a href="#reset_update_priority-instance_method" title="#reset_update_priority (instance method)">#<strong>reset_update_priority</strong>  &#x21d2; Array </a>
     
 
     
@@ -193,31 +217,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Set the site ownership settings.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#remove_default_owner-instance_method" title="#remove_default_owner (instance method)">#<strong>remove_default_owner</strong>  &#x21d2; Array </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Removes the default site owner.</p>
+<p>Reset the site update priority to the default.</p>
 </div></span>
   
 </li>
@@ -232,7 +232,7 @@
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    #<strong>initialize</strong>(conn)  &#x21d2; <tt><span class='object_link'><a href="" title="SFRest::Site_ownership (class)">Site_ownership</a></span></tt> 
+    #<strong>initialize</strong>(conn)  &#x21d2; <tt><span class='object_link'><a href="" title="SFRest::Site_update_priority (class)">Site_update_priority</a></span></tt> 
   
 
   
@@ -241,7 +241,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of Site_ownership.</p>
+<p>Returns a new instance of Site_update_priority.</p>
 
 
   </div>
@@ -275,7 +275,7 @@
 13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/site_ownership.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/site_update_priority.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_conn'>conn</span><span class='rparen'>)</span>
   <span class='ivar'>@conn</span> <span class='op'>=</span> <span class='id identifier rubyid_conn'>conn</span>
@@ -293,68 +293,9 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="default_ownership-instance_method">
+  <h3 class="signature first" id="change_update_priority-instance_method">
   
-    #<strong>default_ownership</strong>  &#x21d2; <tt>Array</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Get current site ownership settings.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>an array containing current settings.</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-18
-19
-20</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/site_ownership.rb', line 18</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_default_ownership'>default_ownership</span>
-  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/site-ownership</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="make_default_owner-instance_method">
-  
-    #<strong>make_default_owner</strong>(username)  &#x21d2; <tt>Array</tt> 
+    #<strong>change_update_priority</strong>(priority)  &#x21d2; <tt>Array</tt> 
   
 
   
@@ -363,7 +304,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Set the site ownership settings.</p>
+<p>Set the site update priority list.</p>
 
 
   </div>
@@ -374,16 +315,16 @@
   
     <li>
       
-        <span class='name'>The</span>
+        <span class='name'>site</span>
       
       
-        <span class='type'>(<tt>String</tt>)</span>
+        <span class='type'>(<tt>Array</tt>)</span>
       
       
       
         &mdash;
         <div class='inline'>
-<p>default owner username. The user has to have the “Platform admin” role.</p>
+<p>node ids in the desired update order.</p>
 </div>
       
     </li>
@@ -420,18 +361,16 @@
 28
 29
 30
-31
-32</pre>
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/site_ownership.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/site_update_priority.rb', line 26</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_make_default_owner'>make_default_owner</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_change_update_priority'>change_update_priority</span><span class='lparen'>(</span><span class='id identifier rubyid_priority'>priority</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span>
-    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>username</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_username'>username</span>
-  <span class='rbrace'>}</span>
-
-  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_put'>put</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/site-ownership</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span><span class='rparen'>)</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>priority</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_priority'>priority</span>
+  <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
+  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_put'>put</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/site-update-priority</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -439,9 +378,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="remove_default_owner-instance_method">
+  <h3 class="signature " id="current_update_priority-instance_method">
   
-    #<strong>remove_default_owner</strong>  &#x21d2; <tt>Array</tt> 
+    #<strong>current_update_priority</strong>  &#x21d2; <tt>Array</tt> 
   
 
   
@@ -450,7 +389,66 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Removes the default site owner.</p>
+<p>Get current site update priority.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>an array of the current site update priority.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/site_update_priority.rb', line 18</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_current_update_priority'>current_update_priority</span>
+  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/site-update-priority</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reset_update_priority-instance_method">
+  
+    #<strong>reset_update_priority</strong>  &#x21d2; <tt>Array</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Reset the site update priority to the default.</p>
 
 
   </div>
@@ -482,15 +480,15 @@
       <pre class="lines">
 
 
+36
 37
-38
-39</pre>
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/site_ownership.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/site_update_priority.rb', line 36</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_remove_default_owner'>remove_default_owner</span>
-  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/site-ownership</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_reset_update_priority'>reset_update_priority</span>
+  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/site-update-priority</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>

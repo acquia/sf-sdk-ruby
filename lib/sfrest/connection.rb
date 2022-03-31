@@ -177,6 +177,7 @@ module SFRest
                       site
                       site_guard
                       site_ownership
+                      site_update_priority
                       stage
                       task
                       theme

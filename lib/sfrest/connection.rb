@@ -176,6 +176,7 @@ module SFRest
                       role
                       site
                       site_ownership
+                      site_update_priority
                       stage
                       task
                       theme

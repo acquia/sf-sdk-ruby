@@ -175,6 +175,7 @@ module SFRest
                       profile
                       role
                       site
+                      site_guard
                       site_ownership
                       stage
                       task

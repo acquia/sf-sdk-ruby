@@ -33,6 +33,7 @@ describe SFRest::Site_update_priority do
       uri = URI res['uri']
       expect(uri.path).to eq path
       expect(res['method']).to eq 'put'
+      expect(JSON(res['body'])['priority']).to eq payload
     end
   end
 

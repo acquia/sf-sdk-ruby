@@ -41,11 +41,13 @@ module SFRest
     # Transfers site ownership using recipients username.
     # @param [Integer] site id.
     # @param [String] username.
+    # @param [Boolean] force_transfer.
     #
     # @return [Array] an array containing the message given by the server.
-    def transfer_site_ownership_using_username(site_id, username)
+    def transfer_site_ownership_using_username(site_id, username, force_transfer)
       payload = {
-        'username' => username
+        'username' => username,
+        'force_transfer' => force_transfer
       }
 
       @conn.post("/api/v1/site-ownership/#{site_id}", payload.to_json)
@@ -54,11 +56,13 @@ module SFRest
     # Transfers site ownership using recipients email.
     # @param [Integer] site id.
     # @param [String] email.
+    # @param [Boolean] force_transfer.
     #
     # @return [Array] an array containing the message given by the server.
-    def transfer_site_ownership_using_email(site_id, email)
+    def transfer_site_ownership_using_email(site_id, email, force_transfer)
       payload = {
-        'email' => email
+        'email' => email,
+        'force_transfer' => force_transfer
       }
 
       @conn.post("/api/v1/site-ownership/#{site_id}", payload.to_json)

@@ -226,7 +226,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#transfer_site_ownership_using_email-instance_method" title="#transfer_site_ownership_using_email (instance method)">#<strong>transfer_site_ownership_using_email</strong>(site_id, email)  &#x21d2; Array </a>
+      <a href="#transfer_site_ownership_using_email-instance_method" title="#transfer_site_ownership_using_email (instance method)">#<strong>transfer_site_ownership_using_email</strong>(site_id, email, force_transfer)  &#x21d2; Array </a>
     
 
     
@@ -250,7 +250,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#transfer_site_ownership_using_username-instance_method" title="#transfer_site_ownership_using_username (instance method)">#<strong>transfer_site_ownership_using_username</strong>(site_id, username)  &#x21d2; Array </a>
+      <a href="#transfer_site_ownership_using_username-instance_method" title="#transfer_site_ownership_using_username (instance method)">#<strong>transfer_site_ownership_using_username</strong>(site_id, username, force_transfer)  &#x21d2; Array </a>
     
 
     
@@ -548,7 +548,7 @@
       <div class="method_details ">
   <h3 class="signature " id="transfer_site_ownership_using_email-instance_method">
   
-    #<strong>transfer_site_ownership_using_email</strong>(site_id, email)  &#x21d2; <tt>Array</tt> 
+    #<strong>transfer_site_ownership_using_email</strong>(site_id, email, force_transfer)  &#x21d2; <tt>Array</tt> 
   
 
   
@@ -593,6 +593,17 @@
       
     </li>
   
+    <li>
+      
+        <span class='name'>force_transfer.</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
 </ul>
 
 <p class="tag_title">Returns:</p>
@@ -620,20 +631,22 @@
       <pre class="lines">
 
 
-59
-60
-61
 62
 63
 64
-65</pre>
+65
+66
+67
+68
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/site_ownership.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/site_ownership.rb', line 62</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_transfer_site_ownership_using_email'>transfer_site_ownership_using_email</span><span class='lparen'>(</span><span class='id identifier rubyid_site_id'>site_id</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_transfer_site_ownership_using_email'>transfer_site_ownership_using_email</span><span class='lparen'>(</span><span class='id identifier rubyid_site_id'>site_id</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span><span class='comma'>,</span> <span class='id identifier rubyid_force_transfer'>force_transfer</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span>
-    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>email</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_email'>email</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>email</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_email'>email</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>force_transfer</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_force_transfer'>force_transfer</span>
   <span class='rbrace'>}</span>
 
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/site-ownership/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_site_id'>site_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span><span class='rparen'>)</span>
@@ -646,7 +659,7 @@
       <div class="method_details ">
   <h3 class="signature " id="transfer_site_ownership_using_username-instance_method">
   
-    #<strong>transfer_site_ownership_using_username</strong>(site_id, username)  &#x21d2; <tt>Array</tt> 
+    #<strong>transfer_site_ownership_using_username</strong>(site_id, username, force_transfer)  &#x21d2; <tt>Array</tt> 
   
 
   
@@ -691,6 +704,17 @@
       
     </li>
   
+    <li>
+      
+        <span class='name'>force_transfer.</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
 </ul>
 
 <p class="tag_title">Returns:</p>
@@ -718,20 +742,22 @@
       <pre class="lines">
 
 
-46
 47
 48
 49
 50
 51
-52</pre>
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/site_ownership.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/site_ownership.rb', line 47</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_transfer_site_ownership_using_username'>transfer_site_ownership_using_username</span><span class='lparen'>(</span><span class='id identifier rubyid_site_id'>site_id</span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_transfer_site_ownership_using_username'>transfer_site_ownership_using_username</span><span class='lparen'>(</span><span class='id identifier rubyid_site_id'>site_id</span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_force_transfer'>force_transfer</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span>
-    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>username</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_username'>username</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>username</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_username'>username</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>force_transfer</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_force_transfer'>force_transfer</span>
   <span class='rbrace'>}</span>
 
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/site-ownership/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_site_id'>site_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span><span class='rparen'>)</span>
@@ -746,7 +772,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Apr 21 21:18:44 2022 by
+  Generated on Mon May  9 11:55:00 2022 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.6.6).
 </div>

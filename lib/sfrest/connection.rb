@@ -180,6 +180,7 @@ module SFRest
                       site_update_priority
                       stage
                       task
+                      task_log_settings
                       theme
                       update
                       usage

@@ -49,4 +49,36 @@ describe SFRest::Site_ownership do
       expect(res['method']).to eq 'delete'
     end
   end
+
+  describe '#transfer_site_ownership_using_username' do
+    id = 123
+    path = "/api/v1/site-ownership/#{id}"
+
+    it 'calls the site ownership post endpoint and transfers site owner using username' do
+      stub_request(:any, /.*#{@mock_endpoint}.*#{path}/)
+        .with(headers: @mock_headers)
+        .to_return { |request| { body: { uri: request.uri, body: request.body, method: request.method }.to_json } }
+      res = @conn.site_ownership.transfer_site_ownership_using_username(id, 'john.doe', true)
+      uri = URI res['uri']
+      expect(uri.path).to eq path
+      expect(res['method']).to eq 'post'
+      expect(JSON(res['body'])['username']).to eq 'john.doe'
+    end
+  end
+
+  describe '#transfer_site_ownership_using_email' do
+    id = 123
+    path = "/api/v1/site-ownership/#{id}"
+
+    it 'calls the site ownership post endpoint and transfers site owner using email' do
+      stub_request(:any, /.*#{@mock_endpoint}.*#{path}/)
+        .with(headers: @mock_headers)
+        .to_return { |request| { body: { uri: request.uri, body: request.body, method: request.method }.to_json } }
+      res = @conn.site_ownership.transfer_site_ownership_using_email(id, 'john.doe@acquia.com', true)
+      uri = URI res['uri']
+      expect(uri.path).to eq path
+      expect(res['method']).to eq 'post'
+      expect(JSON(res['body'])['email']).to eq 'john.doe@acquia.com'
+    end
+  end
 end

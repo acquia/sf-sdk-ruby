@@ -21,6 +21,15 @@ module SFRest
 
     # Change security settings.
     #
+    # @param [Hash] datum Options to the security settings
+    # @option datum [Integer] 'minimum_password_length'
+    # @option datum [String] 'minimum_required_password_strength'
+    # @option datum [String] 'two_step_verification'
+    # @option datum [String] 'sign_out_inactive_user_accounts'
+    # @option datum [Integer] 'sign_out_inactivity_time'
+    # @option datum [String] 'automatically_disable_accounts'
+    # @option datum [Integer] 'automatically_disable_accounts_after_days'
+    #
     # @return [Array] an array containing the message given by the server.
     def change_security_settings(datum)
       @conn.put('/api/v1/security', datum.to_json)

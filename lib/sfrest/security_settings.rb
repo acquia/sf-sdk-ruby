@@ -24,10 +24,10 @@ module SFRest
     # @param [Hash] data Options to the security settings
     # @option data [Integer] 'minimum_password_length'
     # @option data [String] 'minimum_required_password_strength'
-    # @option data [String] 'two_step_verification'
-    # @option data [String] 'sign_out_inactive_user_accounts'
+    # @option data [Boolean] 'two_step_verification'
+    # @option data [Boolean] 'sign_out_inactive_user_accounts'
     # @option data [Integer] 'sign_out_inactivity_time'
-    # @option data [String] 'automatically_disable_accounts'
+    # @option data [Boolean] 'automatically_disable_accounts'
     # @option data [Integer] 'automatically_disable_accounts_after_days'
     #
     # @return [Array] an array containing the message given by the server.

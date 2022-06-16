@@ -174,6 +174,7 @@ module SFRest
                       info
                       profile
                       role
+                      security_settings
                       site
                       site_guard
                       site_ownership

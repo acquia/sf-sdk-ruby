@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Class: SFRest::Variable
+  Class: SFRest::Security_settings
   
     &mdash; Documentation by YARD 0.9.25
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
 <script type="text/javascript">
-  pathId = "SFRest::Variable";
+  pathId = "SFRest::Security_settings";
   relpath = '../';
 </script>
 
@@ -36,10 +36,10 @@
       <div id="header">
         <div id="menu">
   
-    <a href="../_index.html">Index (V)</a> &raquo;
+    <a href="../_index.html">Index (S)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../SFRest.html" title="SFRest (module)">SFRest</a></span></span>
      &raquo; 
-    <span class="title">Variable</span>
+    <span class="title">Security_settings</span>
   
 </div>
 
@@ -59,7 +59,7 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><h1>Class: SFRest::Variable
+      <div id="content"><h1>Class: SFRest::Security_settings
   
   
   
@@ -74,7 +74,7 @@
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next">SFRest::Variable</li>
+            <li class="next">SFRest::Security_settings</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -94,7 +94,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/sfrest/variable.rb</dd>
+    <dd>lib/sfrest/security_settings.rb</dd>
   </dl>
   
 </div>
@@ -102,7 +102,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Perform actions against variables in the Factory</p>
+<p>We need to keep this naming due to the way connection.rb autoloads things. rubocop: disable Naming/ClassAndModuleCamelCase Manage the factory security settings.</p>
 
 
   </div>
@@ -128,7 +128,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_variable-instance_method" title="#get_variable (instance method)">#<strong>get_variable</strong>(name)  &#x21d2; Object </a>
+      <a href="#change_security_settings-instance_method" title="#change_security_settings (instance method)">#<strong>change_security_settings</strong>(datum)  &#x21d2; Array </a>
     
 
     
@@ -143,7 +143,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Gets the value of a specific variable.</p>
+<p>Change security settings.</p>
 </div></span>
   
 </li>
@@ -152,7 +152,31 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(conn)  &#x21d2; Variable </a>
+      <a href="#current_security_settings-instance_method" title="#current_security_settings (instance method)">#<strong>current_security_settings</strong>  &#x21d2; Array </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get current security settings.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(conn)  &#x21d2; Security_settings </a>
     
 
     
@@ -169,7 +193,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of Variable.</p>
+<p>A new instance of Security_settings.</p>
 </div></span>
   
 </li>
@@ -178,7 +202,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#set_variable-instance_method" title="#set_variable (instance method)">#<strong>set_variable</strong>(name, value)  &#x21d2; Object </a>
+      <a href="#reset_security_settings-instance_method" title="#reset_security_settings (instance method)">#<strong>reset_security_settings</strong>  &#x21d2; Array </a>
     
 
     
@@ -193,31 +217,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Sets the key and value of a variable.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#variable_list-instance_method" title="#variable_list (instance method)">#<strong>variable_list</strong>  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Gets the list of variables.</p>
+<p>Reset current security settings.</p>
 </div></span>
   
 </li>
@@ -232,7 +232,7 @@
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    #<strong>initialize</strong>(conn)  &#x21d2; <tt><span class='object_link'><a href="" title="SFRest::Variable (class)">Variable</a></span></tt> 
+    #<strong>initialize</strong>(conn)  &#x21d2; <tt><span class='object_link'><a href="" title="SFRest::Security_settings (class)">Security_settings</a></span></tt> 
   
 
   
@@ -241,7 +241,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of Variable.</p>
+<p>Returns a new instance of Security_settings.</p>
 
 
   </div>
@@ -270,12 +270,12 @@
       <pre class="lines">
 
 
-7
-8
-9</pre>
+11
+12
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/variable.rb', line 7</span>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/security_settings.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_conn'>conn</span><span class='rparen'>)</span>
   <span class='ivar'>@conn</span> <span class='op'>=</span> <span class='id identifier rubyid_conn'>conn</span>
@@ -293,9 +293,9 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="get_variable-instance_method">
+  <h3 class="signature first" id="change_security_settings-instance_method">
   
-    #<strong>get_variable</strong>(name)  &#x21d2; <tt>Object</tt> 
+    #<strong>change_security_settings</strong>(datum)  &#x21d2; <tt>Array</tt> 
   
 
   
@@ -304,13 +304,90 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Gets the value of a specific variable.</p>
+<p>Change security settings.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>an array containing the message given by the server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/security_settings.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_change_security_settings'>change_security_settings</span><span class='lparen'>(</span><span class='id identifier rubyid_datum'>datum</span><span class='rparen'>)</span>
+  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_put'>put</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/security</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_datum'>datum</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="current_security_settings-instance_method">
+  
+    #<strong>current_security_settings</strong>  &#x21d2; <tt>Array</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get current security settings.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>an array containing current security settings.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -320,15 +397,13 @@
 
 18
 19
-20
-21</pre>
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/variable.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/security_settings.rb', line 18</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_get_variable'>get_variable</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/variables?name=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_current_security_settings'>current_security_settings</span>
+  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/security</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -336,9 +411,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="set_variable-instance_method">
+  <h3 class="signature " id="reset_security_settings-instance_method">
   
-    #<strong>set_variable</strong>(name, value)  &#x21d2; <tt>Object</tt> 
+    #<strong>reset_security_settings</strong>  &#x21d2; <tt>Array</tt> 
   
 
   
@@ -347,13 +422,31 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Sets the key and value of a variable.</p>
+<p>Reset current security settings.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>an array containing the message given by the server.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -361,62 +454,15 @@
       <pre class="lines">
 
 
-24
-25
-26
-27
-28</pre>
+32
+33
+34</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/variable.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/security_settings.rb', line 32</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_set_variable'>set_variable</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/variables</span><span class='tstring_end'>&#39;</span></span>
-  <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>value</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_value'>value</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
-  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_put'>put</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="variable_list-instance_method">
-  
-    #<strong>variable_list</strong>  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Gets the list of variables.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-12
-13
-14
-15</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/variable.rb', line 12</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_variable_list'>variable_list</span>
-  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/variables</span><span class='tstring_end'>&#39;</span></span>
-  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_reset_security_settings'>reset_security_settings</span>
+  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/security</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>

@@ -128,7 +128,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#change_security_settings-instance_method" title="#change_security_settings (instance method)">#<strong>change_security_settings</strong>(datum)  &#x21d2; Array </a>
+      <a href="#change_security_settings-instance_method" title="#change_security_settings (instance method)">#<strong>change_security_settings</strong>(data)  &#x21d2; Array </a>
     
 
     
@@ -295,7 +295,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="change_security_settings-instance_method">
   
-    #<strong>change_security_settings</strong>(datum)  &#x21d2; <tt>Array</tt> 
+    #<strong>change_security_settings</strong>(data)  &#x21d2; <tt>Array</tt> 
   
 
   
@@ -310,7 +310,99 @@
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Options to the security settings</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>data</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">'minimum_password_length'</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">'minimum_required_password_strength'</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">'two_step_verification'</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">'sign_out_inactive_user_accounts'</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">'sign_out_inactivity_time'</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">'automatically_disable_accounts'</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">'automatically_disable_accounts_after_days'</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+    </ul>
+  
+
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -336,15 +428,15 @@
       <pre class="lines">
 
 
-25
-26
-27</pre>
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/security_settings.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/security_settings.rb', line 34</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_change_security_settings'>change_security_settings</span><span class='lparen'>(</span><span class='id identifier rubyid_datum'>datum</span><span class='rparen'>)</span>
-  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_put'>put</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/security</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_datum'>datum</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_change_security_settings'>change_security_settings</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_put'>put</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/security</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -454,12 +546,12 @@
       <pre class="lines">
 
 
-32
-33
-34</pre>
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/security_settings.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/security_settings.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset_security_settings'>reset_security_settings</span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/security</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -474,9 +566,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jun  1 14:24:04 2022 by
+  Generated on Tue Jun 28 11:27:42 2022 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.25 (ruby-2.7.2).
+  0.9.25 (ruby-2.6.3).
 </div>
 
     </div>

@@ -100,6 +100,22 @@ module SFRest
       @multi_stack ||= @conn.codebase.list['stacks'].size > 1
     end
 
+    # Terminates an updater.
+    def terminate_updater(update_id)
+      current_path = "/api/v1/update/#{update_id}"
+      @conn.delete(current_path)
+    end
+
+    # Changes the updater start time.
+    def change_updater_start_time(updater_id, new_update_time)
+      current_path = '/api/v1/update/change_time'
+      payload = {
+        'updater_id' => updater_id,
+        'new_update_time' => new_update_time
+      }.to_json
+      @conn.post(current_path, payload)
+    end
+
     # Determines if the v2 endpoint exists.
     # A factory with the endpoint will raise an SFRest::BadRequestError
     # A factory without the endpoint will raise SFRest::InvalidResponse

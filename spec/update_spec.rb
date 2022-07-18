@@ -327,6 +327,37 @@ describe SFRest::Update do
     end
   end
 
+  describe '#terminate_updater' do
+    path = '/api/v1/update'
+
+    it 'terminates an updater' do
+      stub_request(:any, /.*#{@mock_endpoint}.*#{path}/)
+        .with(headers: @mock_headers)
+        .to_return { |request| { body: { uri: request.uri, body: request.body, method: request.method }.to_json } }
+      upid = rand 1000
+      res = @conn.update.terminate_updater upid
+      uri = URI res['uri']
+      expect(uri.path).to eq "#{path}/#{upid}"
+      expect(res['method']).to eq 'delete'
+    end
+  end
+
+  describe '#change_updater_start_time' do
+    path = '/api/v1/update/change_time'
+
+    it 'changes the updater start time' do
+      stub_request(:any, /.*#{@mock_endpoint}.*#{path}/)
+        .with(headers: @mock_headers)
+        .to_return { |request| { body: { uri: request.uri, body: request.body, method: request.method }.to_json } }
+      upid = rand 1000
+      new_time = 'Tue Jun 28 08:23:59 2022 UTC'
+      res = @conn.update.change_updater_start_time upid, new_time
+      uri = URI res['uri']
+      expect(uri.path).to eq path
+      expect(res['method']).to eq 'post'
+    end
+  end
+
   describe '#pause_update' do
     path = '/api/v1/update'
 

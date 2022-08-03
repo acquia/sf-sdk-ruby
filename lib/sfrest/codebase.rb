@@ -10,7 +10,7 @@ module SFRest
 
     # Lists the codebases
     # @return [Hash] A hash of codebases configured for the factory.
-    # { "stacks" => { 1 => {"name" : "abcde", "description": "xyz"} , 2 => {"name":"fghij", "description": "xyzsc" } } }
+    # { "stacks" => { 1 => "abcde", 2 => 'fghij' } }
     def list
       @conn.get('/api/v1/stacks')
     end
@@ -27,6 +27,13 @@ module SFRest
         'description' => description
       }
       @conn.put("/api/v1/stacks/#{stack_id}", payload.to_json)
+    end
+
+    # Lists the codebases with details.
+    # @return [Hash] A hash of codebases with details configured for the factory.
+    # {"1": {"id": 1, "name": "name", "description": "description", "tangle_alias": "tangle1"} }
+    def stacks_with_details
+      @conn.get('/api/v1/stacks/details')
     end
   end
 end

@@ -37,4 +37,18 @@ describe SFRest::Codebase do
       expect(JSON(res['body'])['description']).to eq 'new-description'
     end
   end
+
+  describe '#get_stack_with_details' do
+    path = '/api/v1/stacks/details'
+
+    it 'calls the stacks get endpoint to get all stacks with details' do
+      stub_request(:any, /.*#{@mock_endpoint}.*#{path}/)
+        .with(headers: @mock_headers)
+        .to_return { |request| { body: { uri: request.uri, body: request.body, method: request.method }.to_json } }
+      res = @conn.codebase.stacks_with_details
+      uri = URI res['uri']
+      expect(uri.path).to eq path
+      expect(res['method']).to eq 'get'
+    end
+  end
 end

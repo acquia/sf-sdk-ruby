@@ -193,7 +193,31 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Lists the codebases { “stacks” =&gt; { 1 =&gt; : “abcde”, “description”: “xyz” , 2 =&gt; {“name”:“fghij”, “description”: “xyzsc” } } }.</p>
+<p>Lists the codebases { “stacks” =&gt; { 1 =&gt; “abcde”, 2 =&gt; &#39;fghij&#39; } }.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stacks_with_details-instance_method" title="#stacks_with_details (instance method)">#<strong>stacks_with_details</strong>  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Lists the codebases with details.</p>
 </div></span>
   
 </li>
@@ -384,7 +408,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Lists the codebases { “stacks” =&gt; { 1 =&gt; : “abcde”, “description”: “xyz” , 2 =&gt; {“name”:“fghij”, “description”: “xyzsc” } } }</p>
+<p>Lists the codebases { “stacks” =&gt; { 1 =&gt; “abcde”, 2 =&gt; &#39;fghij&#39; } }</p>
 
 
   </div>
@@ -431,12 +455,71 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="stacks_with_details-instance_method">
+  
+    #<strong>stacks_with_details</strong>  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Lists the codebases with details. {“id”: 1, “name”: “name”, “description”: “description”, “tangle_alias”: “tangle1” }</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A hash of codebases with details configured for the factory.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/codebase.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stacks_with_details'>stacks_with_details</span>
+  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/stacks/details</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
       <div id="footer">
-  Generated on Wed Jul 27 23:12:09 2022 by
+  Generated on Wed Aug  3 17:49:43 2022 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.6.6).
 </div>

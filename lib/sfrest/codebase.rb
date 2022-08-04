@@ -19,12 +19,14 @@ module SFRest
     # @param [Integer] stack_id.
     # @param [String] name.
     # @param [String] description.
+    # @param [String] tangle_alias.
     #
     # @return [Array] an array containing the message given by the server.
-    def edit_stacks(stack_id, name, description)
+    def edit_stacks(stack_id, name, description, tangle_alias)
       payload = {
         'name' => name,
-        'description' => description
+        'description' => description,
+        'tangle_alias' => tangle_alias
       }
       @conn.put("/api/v1/stacks/#{stack_id}", payload.to_json)
     end

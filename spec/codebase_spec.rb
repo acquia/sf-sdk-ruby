@@ -29,12 +29,13 @@ describe SFRest::Codebase do
       stub_request(:any, /.*#{@mock_endpoint}.*#{path}/)
         .with(headers: @mock_headers)
         .to_return { |request| { body: { uri: request.uri, body: request.body, method: request.method }.to_json } }
-      res = @conn.codebase.edit_stacks(id, 'new-name', 'new-description')
+      res = @conn.codebase.edit_stacks(id, 'new-name', 'new-description', 'tangle1')
       uri = URI res['uri']
       expect(uri.path).to eq path
       expect(res['method']).to eq 'put'
       expect(JSON(res['body'])['name']).to eq 'new-name'
       expect(JSON(res['body'])['description']).to eq 'new-description'
+      expect(JSON(res['body'])['tangle_alias']).to eq 'tangle1'
     end
   end
 

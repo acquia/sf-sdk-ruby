@@ -15,8 +15,8 @@ lib/sfrest/backup.rb 9e2a9807c8fd75210c6bac995e9830290c091529
 lib/sfrest/update.rb 2dc95ca50ab0d7017ac1296b80d1c417a5e9d834
 lib/sfrest/domains.rb f0817522680126d267ccc2d71dcc398fdabd5da3
 lib/sfrest/profile.rb e506ccffecf7a8cf34e420924243250de38d8e6b
-lib/sfrest/version.rb 023df5be9b4c4e9bd1a39447631cfee12f9b9c73
-lib/sfrest/codebase.rb e8658df7d111b1d12ad0fcaca76c5d2948620fac
+lib/sfrest/version.rb 5cc364202815429ff863016949cdf33bbf85d93e
+lib/sfrest/codebase.rb 86aec3743bd186f1a5bce5e8db27a57444fc1668
 lib/sfrest/variable.rb 29d5899e356488e2f58df6841b80b67cc6b43d06
 lib/sfrest/collection.rb 60a123604d676b82cc1b2a97d9288637a0e3f3d1
 lib/sfrest/connection.rb 120e1bdb1e9b8e5ee915559bbc513fb16ff52c3d

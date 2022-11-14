@@ -112,4 +112,32 @@ describe SFRest::Backup do
       expect(res['method']).to eq 'post'
     end
   end
+
+  describe '#set_backup_expiry' do
+    path = '/api/v1/backup-expiration/'
+
+    it 'sets the backup expiration setting' do
+      stub_request(:any, /.*#{@mock_endpoint}.*#{path}/)
+        .with(headers: @mock_headers)
+        .to_return { |request| { body: { uri: request.uri, body: request.body, method: request.method }.to_json } }
+
+      days = 100
+      res = @conn.backup.expiration_set days
+      expect(JSON(res['body'])['expiration_days']).to eq days
+      expect(res['method']).to eq 'post'
+    end
+  end
+
+  describe '#get_backup_expiry' do
+    path = '/api/v1/backup-expiration/'
+
+    it 'gets the backup expiration setting' do
+      stub_request(:any, /.*#{@mock_endpoint}.*#{path}/)
+        .with(headers: @mock_headers)
+        .to_return { |request| { body: { uri: request.uri, body: request.body, method: request.method }.to_json } }
+
+      res = @conn.backup.expiration_get
+      expect(res['method']).to eq 'get'
+    end
+  end
 end

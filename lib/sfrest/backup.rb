@@ -44,5 +44,20 @@ module SFRest
     def backup_url(site_id, backup_id, lifetime = 60)
       @conn.get("/api/v1/sites/#{site_id}/backups/#{backup_id}/url?lifetime=#{lifetime}")
     end
+
+    # Configures the backup expiration and automatic deletion setting.
+    # @param [Integer] days Number of days after which backups are deleted.
+    def expiration_set(days)
+      payload = {
+        'expiration_days' => days
+      }
+      @conn.post('/api/v1/backup-expiration/', payload.to_json)
+    end
+
+    # Gets the current the backup expiration and automatic deletion setting.
+    # @return [Hash]
+    def expiration_get
+      @conn.get('/api/v1/backup-expiration/')
+    end
   end
 end

@@ -124,7 +124,7 @@ describe SFRest::Backup do
       days = 100
       res = @conn.backup.expiration_set days
       expect(JSON(res['body'])['expiration_days']).to eq days
-      expect(res['method']).to eq 'post'
+      expect(res['method']).to eq 'put'
     end
   end
 

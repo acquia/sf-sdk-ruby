@@ -51,7 +51,7 @@ module SFRest
       payload = {
         'expiration_days' => days
       }
-      @conn.post('/api/v1/backup-expiration/', payload.to_json)
+      @conn.put('/api/v1/backup-expiration/', payload.to_json)
     end
 
     # Gets the current the backup expiration and automatic deletion setting.

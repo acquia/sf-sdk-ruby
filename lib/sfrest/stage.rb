@@ -35,6 +35,7 @@ module SFRest
     # @param [Array] Stacks Array of stack ids to wipe
     # @param [Boolean] skip_site_files site skip file transfer during staging
     # @param [Array] skip_site_files_overwrite list of files to skip during staging
+    # @param [Boolean] force_psu_hook Force post-staging-update hook to run even if VCS paths are the same
     #
     # @return [Integer] Id of the staging task created.
     # rubocop:disable Metrics/ParameterLists
@@ -45,7 +46,8 @@ module SFRest
                        synchronize_all_users: true,
                        wipe_stacks: [],
                        skip_site_files: false,
-                       skip_site_files_overwrite: [])
+                       skip_site_files_overwrite: [],
+                       force_psu_hook: false)
       raise InvalidApiVersion, staging_versions unless staging_versions.include? 2
 
       payload = { 'to_env' => env, 'sites' => sites,
@@ -54,7 +56,8 @@ module SFRest
                   'synchronize_all_users' => synchronize_all_users,
                   'wipe_stacks' => wipe_stacks,
                   'skip_site_files' => skip_site_files,
-                  'skip_site_files_overwrite' => skip_site_files_overwrite }.to_json
+                  'skip_site_files_overwrite' => skip_site_files_overwrite,
+                  'force_psu_hook' => force_psu_hook }.to_json
       @conn.post('/api/v2/stage', payload)
     end
     # rubocop:enable Metrics/ParameterLists

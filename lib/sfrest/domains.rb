@@ -21,12 +21,15 @@ module SFRest
     end
 
     # Get all domains of all sites known to site factory.
-    # 
-    # @return [Hash] 
-    #
-    #
-    def get_all()
-      current_path = "/api/v1/domains"
+    # @param [Hash] opts - 'limit' and 'page' are supported for pagination.
+    # @return [Hash] {
+    #     "count": 111,
+    #     "domains": [
+    #       {'nid' => 2, 'domain' => 'foobar.com', 'type' => 'simple', 'readonly' => true},
+    #       {'nid' => 6, 'domain' => 'zoofoo.com', 'type' => 'customerStandard', 'readonly' => false}
+    #     ]}
+    def get_all(**opts)
+      current_path = "/api/v1/domains?#{URI.encode_www_form(opts)}"
       @conn.get(current_path)
     end
 

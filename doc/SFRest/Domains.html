@@ -200,6 +200,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#get_all-instance_method" title="#get_all (instance method)">#<strong>get_all</strong>(**opts)  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get all domains of all sites known to site factory.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(conn)  &#x21d2; Domains </a>
     
 
@@ -444,13 +468,13 @@
       <pre class="lines">
 
 
-47
-48
-49
-50</pre>
+60
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/domains.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/domains.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='id identifier rubyid_node_id'>node_id</span><span class='comma'>,</span> <span class='id identifier rubyid_domain_name'>domain_name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>domain_name</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_domain_name'>domain_name</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
@@ -525,12 +549,12 @@
       <pre class="lines">
 
 
-27
-28
-29</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/domains.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/domains.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_custom_domains'>custom_domains</span><span class='lparen'>(</span><span class='id identifier rubyid_node_id'>node_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_node_id'>node_id</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>domains</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>custom_domains</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -622,6 +646,94 @@
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="get_all-instance_method">
+  
+    #<strong>get_all</strong>(**opts)  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get all domains of all sites known to site factory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>opts</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><ul><li>
+<p>&#39;limit&#39; and &#39;page&#39; are supported for pagination.</p>
+</li></ul>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>{ “count”: 111, “domains”: [</p>
+
+<pre class="code ruby"><code class="ruby">{&#39;nid&#39; =&gt; 2, &#39;domain&#39; =&gt; &#39;foobar.com&#39;, &#39;type&#39; =&gt; &#39;simple&#39;, &#39;readonly&#39; =&gt; true},
+{&#39;nid&#39; =&gt; 6, &#39;domain&#39; =&gt; &#39;zoofoo.com&#39;, &#39;type&#39; =&gt; &#39;customerStandard&#39;, &#39;readonly&#39; =&gt; false}
+</code></pre>
+
+<p>]}</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/domains.rb', line 31</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_all'>get_all</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_current_path'>current_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/domains?</span><span class='embexpr_beg'>#{</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_encode_www_form'>encode_www_form</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_current_path'>current_path</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="protected_domains-instance_method">
   
     #<strong>protected_domains</strong>(node_id)  &#x21d2; <tt>Array</tt> 
@@ -685,12 +797,12 @@
       <pre class="lines">
 
 
-35
-36
-37</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/domains.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/domains.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_protected_domains'>protected_domains</span><span class='lparen'>(</span><span class='id identifier rubyid_node_id'>node_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_node_id'>node_id</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>domains</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>protected_domains</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -780,13 +892,13 @@
       <pre class="lines">
 
 
-60
-61
-62
-63</pre>
+73
+74
+75
+76</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/domains.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/domains.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_remove'>remove</span><span class='lparen'>(</span><span class='id identifier rubyid_node_id'>node_id</span><span class='comma'>,</span> <span class='id identifier rubyid_domain_name'>domain_name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>domain_name</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_domain_name'>domain_name</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
@@ -867,12 +979,12 @@
       <pre class="lines">
 
 
-78
-79
-80</pre>
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sfrest/domains.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'lib/sfrest/domains.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_status'>status</span><span class='lparen'>(</span><span class='id identifier rubyid_domain_name'>domain_name</span><span class='rparen'>)</span>
   <span class='ivar'>@conn</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/api/v1/domains/status/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_domain_name'>domain_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -887,7 +999,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Nov 18 15:30:51 2022 by
+  Generated on Wed Feb  1 14:58:16 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.25 (ruby-2.6.6).
 </div>

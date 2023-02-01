@@ -20,6 +20,16 @@ module SFRest
       @conn.get(current_path)
     end
 
+    # Get all domains of all sites known to site factory.
+    # 
+    # @return [Hash] 
+    #
+    #
+    def get_all()
+      current_path = "/api/v1/domains"
+      @conn.get(current_path)
+    end
+
     # Get the custom domains on a node
     # @param [Integer] node_id The id of the node.
     #

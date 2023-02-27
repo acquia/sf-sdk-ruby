@@ -37,6 +37,37 @@ describe SFRest::Domains do
     end
   end
 
+  describe '#get_all_domains' do
+    path = '/api/v1/domains'
+    domains_data = {
+      'count' => 111,
+      'domains' => [
+        {
+          'nid' => 2,
+          'domain' => 'foobar.com',
+          'type' => 'simple',
+          'readonly' => true
+        },
+        {
+          'nid' => 6,
+          'domain' => 'zoofoo.com',
+          'type' => 'customerStandard',
+          'readonly' => false
+        }
+      ]
+    }
+    it 'gets all the domains' do
+      stub_factory path, [domains_data.to_json]
+      expect(@conn.domains.get_all).to eq domains_data
+    end
+    it 'understands paging params' do
+      expect(@conn).to receive(:get)
+        .with("#{path}?limit=7&page=2")
+        .and_return(domains_data)
+      @conn.domains.get_all({ limit: 7, page: 2 })
+    end
+  end
+
   describe '#add_domains' do
     path = '/api/v1/domains'
     domain = "#{SecureRandom.urlsafe_base64(5)}.#{SecureRandom.urlsafe_base64(5)}.com"

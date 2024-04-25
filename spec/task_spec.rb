@@ -225,7 +225,7 @@ describe SFRest::Task do
 
   describe '#find_task' do
   it 'retrieves a specific task by ID' do
-    task_id = 123
+    task_id = 6486
     task = generate_task(task_id)
     stub_factory "/api/v1/tasks/#{task_id}", task.to_json
 
@@ -242,6 +242,14 @@ describe SFRest::Task do
 
     expect { @conn.task.find_task(task_id) }.to raise_error(SFRest::SFError)
   end
+end
+
+def generate_task(task_id)
+  {
+    'id' => task_id,
+    'name' => "Task #{task_id}",
+    'status' => SFRest::Task::STATUS_COMPLETED
+  }
 end
 
   describe '#get_task_id' do

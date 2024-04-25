@@ -223,6 +223,27 @@ describe SFRest::Task do
     end
   end
 
+  describe '#find_task' do
+  it 'retrieves a specific task by ID' do
+    task_id = 123
+    task = generate_task(task_id)
+    stub_factory "/api/v1/tasks/#{task_id}", task.to_json
+
+    res = @conn.task.find_task(task_id)
+    expect(res['id']).to eq(task['id'])
+    expect(res['name']).to eq(task['name'])
+    expect(res['status']).to eq(task['status'])
+  end
+
+  it 'raises an error when task is not found' do
+    task_id = 456
+    error_response = { 'message' => 'Task not found' }
+    stub_factory "/api/v1/tasks/#{task_id}", error_response.to_json, 404
+
+    expect { @conn.task.find_task(task_id) }.to raise_error(SFRest::SFError)
+  end
+end
+
   describe '#get_task_id' do
     it 'can get task id for a named task' do
       tasks = generate_tasks

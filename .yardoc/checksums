@@ -3,7 +3,7 @@ lib/sfrest/cron.rb b79eca6a734af70d17053ca85518e9f62737434f
 lib/sfrest/info.rb ba9d80b54d182490ea894dc832d338705ccadf3e
 lib/sfrest/role.rb 14f829291f7c0b54b35acab383e01535f25e763a
 lib/sfrest/site.rb d101ddf331e15e941506fda4d7ad2248ae8eca31
-lib/sfrest/task.rb 1185c121635cf0849cb9185dcfb366930a8ea971
+lib/sfrest/task.rb f404ebbdcc21815653802d8b0c7ecbdba86ce6d4
 lib/sfrest/user.rb c00d77c9be76b447b3c5410624d106f638840721
 lib/sfrest/audit.rb 83b4ed11bb31fb500d59f98b573afd1be7686887
 lib/sfrest/error.rb 11e22e8c019e8ed00d3f8830db3f8c1b304d37ca
@@ -15,7 +15,7 @@ lib/sfrest/backup.rb b938242b1442f8e4e9e112aa2b00e7706e2eb756
 lib/sfrest/update.rb 2dc95ca50ab0d7017ac1296b80d1c417a5e9d834
 lib/sfrest/domains.rb 2774e0f43de5ef3af79f108a9aea78e9b6e0e9c3
 lib/sfrest/profile.rb e506ccffecf7a8cf34e420924243250de38d8e6b
-lib/sfrest/version.rb d1c11762d749c5f1103e2d2d55a033525efc95e7
+lib/sfrest/version.rb fbb3930e93ff0af2ec9c7805d033d81de4b1c3c2
 lib/sfrest/codebase.rb 86aec3743bd186f1a5bce5e8db27a57444fc1668
 lib/sfrest/variable.rb 29d5899e356488e2f58df6841b80b67cc6b43d06
 lib/sfrest/collection.rb 60a123604d676b82cc1b2a97d9288637a0e3f3d1

@@ -172,6 +172,14 @@ module SFRest
       @conn.get URI.parse(pb.build_url_query(current_path, datum)).to_s
     end
 
+    # Retrieve a specific task by ID.
+    # @param [Integer] task_id The ID of the task to retrieve.
+    # @return [Hash] The task information.
+    def find_task(task_id)
+      current_path = "/api/v1/tasks/#{task_id}"
+      @conn.get(current_path)
+    end
+
     # Looks for a task with a specific name
     # @param [String] name display name of the task
     # @param [String] group task group filter

@@ -61,7 +61,7 @@ def stub_factory(path = nil, return_body = nil, status = 200)
   case return_body
   when Array
     return_data = []
-    return_body.each { |body| return_data.push(status: status, body: body) }
+    return_body.map { |body| return_data.push(status: status, body: body) }
   when Hash
     return_data = return_body
   else
@@ -536,7 +536,7 @@ def generate_roles_data
   roles = {}
   last_acquia_rid = role_candidates.keys.max
   role_count.times do |i|
-    rid = last_acquia_rid + 5 * (i + 1)
+    rid = last_acquia_rid + (5 * (i + 1))
     rname = SecureRandom.urlsafe_base64
     roles[rid] = rname
   end
@@ -561,7 +561,7 @@ def heads?
 end
 
 def time_rand(from = 0.0, to = Time.now)
-  Time.at(from + rand * (to.to_f - from.to_f))
+  Time.at(from + (rand * (to.to_f - from.to_f)))
 end
 
 def define_task_statuses

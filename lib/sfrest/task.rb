@@ -147,7 +147,9 @@ module SFRest
     # @param [Integer] status Integerish the status of the task
     #         see SFRest::Task::STATUS_*
     # @return [Array[Integer]]
+    # rubocop:disable Metrics/ParameterLists
     def find_task_ids(limit = nil, page = nil, group = nil, klass = nil, status = nil)
+      # rubocop:enable Metrics/ParameterLists
       res = find_tasks limit: limit, page: page, group: group, klass: klass, status: status
       task_ids = []
       i = 0
@@ -303,7 +305,7 @@ module SFRest
     def wait_until_state(task_id, state, max_nap)
       blink_time = 5 # wake up and scan
       nap_start = Time.now
-      state_method = method("task_#{state}?".to_sym)
+      state_method = method(:"task_#{state}?")
       loop do
         break if state_method.call(task_id)
         raise TaskNotDoneError, "Task: #{task_id} has taken too long to complete!" if Time.new > (nap_start + max_nap)

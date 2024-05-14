@@ -90,7 +90,7 @@ describe SFRest::Site do
       expect(@conn).to receive(:get)
         .with('/api/v1/sites?show_incomplete=true&stack_id=2&page=1')
         .and_return({ 'count' => 0, 'sites' => [] })
-      @conn.site.site_list({ show_incomplete: true, stack_id: 2 })
+      @conn.site.site_list(show_incomplete: true, stack_id: 2)
     end
 
     it 'returns the error message from the api' do

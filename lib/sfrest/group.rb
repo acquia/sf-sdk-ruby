@@ -143,8 +143,7 @@ module SFRest
     # @return [Integer] the id of groupname
     def get_group_id(groupname)
       res = group_list
-      id = group_data_from_results(res, groupname, 'group_id')
-      return id if id
+      group_data_from_results(res, groupname, 'group_id')
     end
 
     # Extract the group data for 'key' based on the site result object

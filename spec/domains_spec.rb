@@ -64,7 +64,7 @@ describe SFRest::Domains do
       expect(@conn).to receive(:get)
         .with("#{path}?limit=7&page=2")
         .and_return(domains_data)
-      @conn.domains.get_all({ limit: 7, page: 2 })
+      @conn.domains.get_all(limit: 7, page: 2)
     end
   end
 

@@ -9,7 +9,9 @@ module SFRest
     end
 
     # Sends a theme notification.
+    # rubocop:disable Metrics/ParameterLists
     def send_theme_notification(scope = 'site', event = 'modify', nid = 0, theme = '')
+      # rubocop:enable Metrics/ParameterLists
       current_path = '/api/v1/theme/notification'
       payload = { 'scope' => scope, 'event' => event, 'nid' => nid, 'theme' => theme }.to_json
       @conn.post(current_path, payload)

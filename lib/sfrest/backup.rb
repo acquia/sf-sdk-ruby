@@ -45,7 +45,7 @@ module SFRest
 
     def drush_backup_requests(command, ssh_client, site_nid, name, account_info, components)
         drush_cmd = %(#{command} #{site_nid} "#{name}" --components="#{components}" --user=#{account_info['user']} --format=json 2> /dev/null)
-        backup_command = acsf.drush druh_cmd
+        backup_command = acsf.drush drush_cmd
         ssh_client.exec!(backup_command).strip
     end
 

@@ -45,6 +45,15 @@ module SFRest
         expect(task_id).to be_positive
     end
 
+    def drush_backup_requests(command, ssh_client, site_nid, name, account_info, components)
+        drush_cmd = %(#{command} #{site_nid} "#{name}" --components="#{components}" --user=#{account_info['user']} --format=json 2> /dev/null)
+        backup_command = acsf.drush drush_cmd
+        result = ssh_client.exec!(backup_command).strip
+        output = JSON.parse(result)
+        task_id = output['task_id'].to_i
+        expect(task_id).to be_positive
+    end
+
     # Gets a url to download a backup
     # @param [Integer] site_id Node id of site
     # @param [Integer] backup_id Id of backup to delete

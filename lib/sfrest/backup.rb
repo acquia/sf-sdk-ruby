@@ -37,6 +37,14 @@ module SFRest
       @conn.post(current_path, datum.to_json)
     end
 
+    def backup_requests(rest_conn, site_nid, components)
+        name = "rest#{Time.now.to_i}"
+        payload = { 'label' => name, 'callback_url' => 'http://www.example.com', 'components' => components }.to_json
+        output = rest_conn.post "/api/v1/sites/#{site_nid}/backup", payload
+        task_id = output['task_id'].to_i
+        expect(task_id).to be_positive
+    end
+
     # Gets a url to download a backup
     # @param [Integer] site_id Node id of site
     # @param [Integer] backup_id Id of backup to delete

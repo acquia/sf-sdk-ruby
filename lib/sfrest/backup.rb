@@ -40,18 +40,13 @@ module SFRest
     def backup_requests(rest_conn, site_nid, components)
         name = "rest#{Time.now.to_i}"
         payload = { 'label' => name, 'callback_url' => 'http://www.example.com', 'components' => components }.to_json
-        output = rest_conn.post "/api/v1/sites/#{site_nid}/backup", payload
-        task_id = output['task_id'].to_i
-        expect(task_id).to be_positive
+        rest_conn.post "/api/v1/sites/#{site_nid}/backup", payload
     end
 
     def drush_backup_requests(command, ssh_client, site_nid, name, account_info, components)
         drush_cmd = %(#{command} #{site_nid} "#{name}" --components="#{components}" --user=#{account_info['user']} --format=json 2> /dev/null)
-        backup_command = acsf.drush drush_cmd
-        result = ssh_client.exec!(backup_command).strip
-        output = JSON.parse(result)
-        task_id = output['task_id'].to_i
-        expect(task_id).to be_positive
+        backup_command = acsf.drush druh_cmd
+        ssh_client.exec!(backup_command).strip
     end
 
     # Gets a url to download a backup

@@ -76,19 +76,6 @@ module SFRest
       components_json # Keep the original string if it's not valid JSON
     end
 
-    def assert_backup_result(expected_result, task_id, error_message, components)
-      case expected_result
-      when 'succeed'
-        expect(task_id).not_to be_nil, "Expected to succeed but no task ID found. Response message: #{error_message || 'No response message available.'}"
-        puts "Backup task #{task_id} completed successfully with components #{components.inspect}"
-      when 'fail'
-        expect(error_message).not_to be_nil, "Expected to fail but no error message found."
-        puts "Backup task failed as expected with components #{components.inspect}. Error: #{error_message}"
-      else
-        raise "Invalid expected result: #{expected_result}"
-      end
-    end
-
     # Gets a url to download a backup
     # @param [Integer] site_id Node id of site
     # @param [Integer] backup_id Id of backup to delete

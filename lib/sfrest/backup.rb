@@ -37,16 +37,56 @@ module SFRest
       @conn.post(current_path, datum.to_json)
     end
 
-    def backup_requests(rest_conn, site_nid, components)
-        name = "rest#{Time.now.to_i}"
-        payload = { 'label' => name, 'callback_url' => 'http://www.example.com', 'components' => components }.to_json
-        rest_conn.post "/api/v1/sites/#{site_nid}/backup", payload
+    def execute_backup(api, rconn, acsf, site_nid, name, components, user)
+      case api
+      when 'rest'
+        execute_rest_backup(rconn, site_nid, name, components)
+      when 'drush'
+        execute_drush_backup(acsf, site_nid, name, components, user)
+      else
+        raise "Unsupported API: #{api}"
+      end
     end
 
-    def drush_backup_requests(command, ssh_client, site_nid, name, account_info, components)
-        drush_cmd = %(#{command} #{site_nid} "#{name}" --components="#{components}" --user=#{account_info['user']} --format=json 2> /dev/null)
-        backup_command = acsf.drush drush_cmd
-        ssh_client.exec!(backup_command).strip
+    def execute_rest_backup(rconn, site_nid, name, components)
+      payload = {
+        'label' => name,
+        'callback_url' => 'http://www.example.com',
+        'components' => components
+      }.to_json
+      rconn.post "/api/v1/sites/#{site_nid}/backup", payload
+    end
+
+    def execute_drush_backup(acsf, site_nid, name, components, user)
+      drush_components = components.is_a?(Array) ? components.join(",") : components
+      drush_cmd = "sf-backup #{site_nid} \"#{name}\" --components=\"#{drush_components}\" --user=#{user} --format=json"
+      drush_cmd_update = acsf.drush drush_cmd
+      result = acsf.factory_ssh.exec!(drush_cmd_update).strip
+      JSON.parse(result)
+    end
+
+    def parse_response(response)
+      raise "Unexpected response type: #{response.class}" unless response.is_a?(Hash)
+      [response['task_id'], response['message']]
+    end
+
+    def parse_components(components_json)
+      JSON.parse(components_json)
+    rescue JSON::ParserError
+      components_json # Keep the original string if it's not valid JSON
+    end
+
+    def assert_backup_result(expected_result, task_id, error_message, components)
+      case expected_result
+      when 'succeed'
+        expect(task_id).not_to be_nil, "Expected to succeed but no task ID found. Response message: #{error_message || 'No response message available.'}"
+        puts "Backup task #{task_id} completed successfully with components #{components.inspect}"
+      when 'fail'
+        expect(error_message).not_to be_nil, "Expected to fail but no error message found."
+        puts "Backup task failed as expected with components #{components.inspect}. Error: #{error_message}"
+      else
+        raise "Invalid expected result: #{expected_result}"
+      end
     end
 
     # Gets a url to download a backup

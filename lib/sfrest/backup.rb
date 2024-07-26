@@ -58,7 +58,7 @@ module SFRest
     end
 
     def execute_drush_backup(acsf, site_nid, name, components, user)
-      drush_components = components.is_a?(Array) ? components.join(",") : components
+      drush_components = components.is_a?(Array) ? components.join(',') : components
       drush_cmd = "sf-backup #{site_nid} \"#{name}\" --components=\"#{drush_components}\" --user=#{user} --format=json"
       drush_cmd_update = acsf.drush drush_cmd
       result = acsf.factory_ssh.exec!(drush_cmd_update).strip
@@ -67,6 +67,7 @@ module SFRest
 
     def parse_response(response)
       raise "Unexpected response type: #{response.class}" unless response.is_a?(Hash)
+
       [response['task_id'], response['message']]
     end
 

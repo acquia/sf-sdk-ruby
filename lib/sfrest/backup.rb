@@ -37,7 +37,15 @@ module SFRest
       @conn.post(current_path, datum.to_json)
     end
 
-    def execute_backup(api, rconn, acsf, site_nid, name, components, user)
+    def execute_backup(options = {})
+      api = options[:api]
+      rconn = options[:rconn]
+      acsf = options[:acsf]
+      site_nid = options[:site_nid]
+      name = options[:name]
+      components = options[:components]
+      user = options[:user]
+
       case api
       when 'rest'
         execute_rest_backup(rconn, site_nid, name, components)

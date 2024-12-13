@@ -59,7 +59,6 @@ module SFRest
     def execute_rest_backup(rconn, site_nid, name, components)
       payload = {
         'label' => name,
-        'callback_url' => 'http://www.example.com',
         'components' => components
       }.to_json
       rconn.post "/api/v1/sites/#{site_nid}/backup", payload

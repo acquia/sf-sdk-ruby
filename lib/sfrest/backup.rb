@@ -37,6 +37,53 @@ module SFRest
       @conn.post(current_path, datum.to_json)
     end
 
+    def execute_backup(options = {})
+      api = options[:api]
+      rconn = options[:rconn]
+      acsf = options[:acsf]
+      site_nid = options[:site_nid]
+      name = options[:name]
+      components = options[:components]
+      user = options[:user]
+
+      case api
+      when 'rest'
+        execute_rest_backup(rconn, site_nid, name, components)
+      when 'drush'
+        execute_drush_backup(acsf, site_nid, name, components, user)
+      else
+        raise "Unsupported API: #{api}"
+      end
+    end
+
+    def execute_rest_backup(rconn, site_nid, name, components)
+      payload = {
+        'label' => name,
+        'components' => components
+      }.to_json
+      rconn.post "/api/v1/sites/#{site_nid}/backup", payload
+    end
+
+    def execute_drush_backup(acsf, site_nid, name, components, user)
+      drush_components = components.is_a?(Array) ? components.join(',') : components
+      drush_cmd = "sf-backup #{site_nid} \"#{name}\" --components=\"#{drush_components}\" --user=#{user} --format=json"
+      drush_cmd_update = acsf.drush drush_cmd
+      result = acsf.factory_ssh.exec!(drush_cmd_update).strip
+      JSON.parse(result)
+    end
+
+    def parse_response(response)
+      raise "Unexpected response type: #{response.class}" unless response.is_a?(Hash)
+
+      [response['task_id'], response['message']]
+    end
+
+    def parse_components(components_json)
+      JSON.parse(components_json)
+    rescue JSON::ParserError
+      components_json # Keep the original string if it's not valid JSON
+    end
+
     # Gets a url to download a backup
     # @param [Integer] site_id Node id of site
     # @param [Integer] backup_id Id of backup to delete
